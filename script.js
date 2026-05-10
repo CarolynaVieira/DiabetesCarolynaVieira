@@ -53,7 +53,7 @@ if (menuToggle && siteNav && menuOverlay) {
   });
 }
 
-const revealElements = document.querySelectorAll(".fade-in");
+const revealElements = document.querySelectorAll(".fade-in, .visual-reveal");
 
 if (revealElements.length) {
   const revealObserver = new IntersectionObserver(

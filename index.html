@@ -242,6 +242,7 @@
     }
 
     .brand-name {
+      display: block;
       font-family: "Inter", sans-serif;
       color: var(--brand);
       font-size: 18px;
@@ -249,6 +250,27 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       line-height: 1;
+    }
+
+    .brand-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .brand-credentials {
+      display: block;
+      margin-top: 3px;
+      color: var(--text);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      opacity: 0.72;
     }
 
     .nav {
@@ -357,17 +379,21 @@
     /* Hero */
     .hero {
       background:
-        linear-gradient(to right, var(--bg) 0%, var(--bg) 58%, var(--bg-soft) 58%, var(--bg-soft) 100%);
-      overflow: hidden;
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 78%, var(--bg-soft) 100%);
+      overflow: visible;
     }
 
     .hero-inner {
-      min-height: calc(100vh - 84px);
+      min-height: calc(82vh - 84px);
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
       align-items: center;
       gap: 64px;
-      padding: 48px 0 54px;
+      padding: 72px 0 132px;
+    }
+
+    .hero-content {
+      max-width: 780px;
     }
 
     .hero-tag {
@@ -403,6 +429,15 @@
       color: var(--rose-light);
     }
 
+    .hero-highlight {
+      color: var(--rose-light);
+    }
+
+    .hero-mobile-title,
+    .hero-mobile-copy {
+      display: none;
+    }
+
     .hero p {
       max-width: 560px;
       font-size: clamp(17px, 1.7vw, 22px);
@@ -416,7 +451,7 @@
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 42px;
+      margin-bottom: 0;
     }
 
     .hero-highlights {
@@ -424,6 +459,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px 22px;
       max-width: 760px;
+      margin-bottom: 34px;
     }
 
     .highlight-item {
@@ -477,6 +513,7 @@
       height: 100%;
       object-fit: cover;
       border-radius: 28px;
+      opacity: 0.92;
     }
 
     .hero-dot {
@@ -500,239 +537,140 @@
 
     .hero-badge {
       position: absolute;
-      right: -16px;
-      bottom: 28px;
-      background: var(--white);
-      border-radius: 20px;
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: var(--shadow);
-      min-width: 190px;
-    }
-
-    .hero-badge-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: #eef4ed;
-      color: #6f8d69;
-      font-weight: 700;
+      right: 24px;
+      bottom: 24px;
+      z-index: 3;
+      width: auto;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.52);
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(58, 58, 58, 0.08);
+      color: var(--brand);
     }
 
     .hero-badge strong {
       display: block;
+      font-family: "Inter", sans-serif;
       font-size: 15px;
-      margin-bottom: 2px;
+      line-height: 1.15;
+      font-weight: 600;
+      margin-bottom: 3px;
     }
 
     .hero-badge small {
-      color: #8a8684;
-      font-size: 13px;
+      display: block;
+      color: var(--brand);
+      font-size: 11px;
+      line-height: 1.1;
+      letter-spacing: 0.06em;
+      opacity: 0.72;
+    }
+
+    .visual-reveal {
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      will-change: opacity, transform;
+    }
+
+    .visual-reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     /* Como funciona */
     .how-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
       align-items: stretch;
+      max-width: 1160px;
+      margin: 0 auto;
     }
 
     .how-card {
-      padding: 34px 32px 30px;
-      min-height: 0;
+      min-height: 270px;
+      padding: 32px 26px 30px;
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 28px;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(122, 90, 97, 0.08);
-      box-shadow: 0 14px 34px rgba(122, 90, 97, 0.09);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      gap: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 239, 234, 0.92));
+      border: 1px solid rgba(122, 90, 97, 0.1);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 34px rgba(122, 90, 97, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       overflow: hidden;
     }
 
+    .how-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(122, 90, 97, 0.9), rgba(168, 191, 163, 0.85));
+    }
+
     .how-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 22px 48px rgba(122, 90, 97, 0.14);
+      transform: translateY(-6px);
+      border-color: rgba(122, 90, 97, 0.18);
+      box-shadow: 0 24px 48px rgba(122, 90, 97, 0.13);
     }
 
-    .how-card-neutral {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(245, 239, 234, 0.93));
-      border-color: rgba(227, 221, 218, 0.95);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 12px 26px rgba(58, 58, 58, 0.05);
-    }
-
-    .how-card-neutral::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(207, 198, 193, 0.82), rgba(207, 198, 193, 0.14));
-    }
-
-    .how-card-neutral:hover {
-      box-shadow: 0 18px 34px rgba(58, 58, 58, 0.07);
-    }
-
-    .how-card-neutral::after {
-      content: "";
-      position: absolute;
-      top: -64px;
-      right: -20px;
-      width: 164px;
-      height: 164px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(207, 198, 193, 0.2), rgba(207, 198, 193, 0) 74%);
-      pointer-events: none;
-    }
-
-    .how-card-featured {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(245, 239, 234, 0.92));
-      border-color: rgba(122, 90, 97, 0.16);
-      box-shadow: 0 22px 46px rgba(122, 90, 97, 0.16);
-    }
-
-    .how-card-featured::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 5px;
-      background: linear-gradient(90deg, rgba(122, 90, 97, 0.96), rgba(168, 191, 163, 0.9));
-    }
-
-    .how-card-featured::after {
-      content: "";
-      position: absolute;
-      top: -72px;
-      right: -36px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(168, 191, 163, 0.18), rgba(168, 191, 163, 0));
-      pointer-events: none;
-    }
-
-    .how-card-label {
-      align-self: flex-start;
+    .how-icon {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
-      margin: 0;
-      padding: 11px 17px;
-      border-radius: 999px;
-      font-size: 12px;
-      line-height: 1;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-    }
-
-    .how-card-head {
-      display: flex;
-      align-items: flex-start;
-      position: relative;
-      z-index: 1;
-    }
-
-    .how-card-neutral .how-card-label {
-      color: rgba(74, 67, 64, 0.82);
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(207, 198, 193, 0.88);
-      box-shadow: 0 8px 18px rgba(58, 58, 58, 0.03);
-    }
-
-    .how-card-featured .how-card-label {
-      color: var(--white);
-      background: var(--brand);
-      border: 1px solid rgba(122, 90, 97, 0.12);
-      box-shadow: 0 12px 24px rgba(122, 90, 97, 0.16);
-      padding: 12px 18px;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .how-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .how-list li {
-      position: relative;
-      padding-left: 28px;
-      font-size: 17px;
-      line-height: 1.78;
-      color: #726b67;
-    }
-
-    .how-list strong {
-      font-weight: 600;
-      color: inherit;
-    }
-
-    .how-card-neutral .how-list li {
-      color: #6d6662;
-    }
-
-    .how-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.82em;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(122, 90, 97, 0.24);
-      transform: translateY(-50%);
-    }
-
-    .how-card-neutral .how-list li::before {
-      width: 7px;
-      height: 7px;
-      background: rgba(207, 198, 193, 0.95);
-      box-shadow: 0 0 0 4px rgba(227, 221, 218, 0.36);
-    }
-
-    .how-card-featured .how-list li {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .how-card-featured .how-list li::before {
-      width: 9px;
-      height: 9px;
-      background: var(--green-dark);
-      box-shadow: 0 0 0 6px rgba(168, 191, 163, 0.16);
-    }
-
-    .how-quote {
-      margin-top: 42px;
-      text-align: center;
-    }
-
-    .how-quote p {
-      font-family: "Playfair Display", serif;
-      font-style: italic;
-      font-size: clamp(28px, 3.5vw, 44px);
-      line-height: 1.25;
+      justify-content: center;
+      border-radius: 22px;
       color: var(--brand);
-      max-width: 1040px;
-      margin: 0 auto 30px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(168, 191, 163, 0.28);
+      box-shadow: 0 12px 24px rgba(122, 90, 97, 0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .how-icon svg {
+      width: 36px;
+      height: 36px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .how-card h3 {
+      margin: 6px 0 0;
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      line-height: 1.18;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .how-card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 16px;
+      line-height: 1.65;
     }
 
     /* Sobre */
+    #sobre {
+      margin-top: -86px;
+      padding-top: 128px;
+    }
+
     .about-grid {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
@@ -740,9 +678,14 @@
       align-items: center;
     }
 
+    .about-mobile-heading {
+      display: none;
+    }
+
     .about-image-wrap {
       position: relative;
       max-width: 510px;
+      margin-top: -128px;
     }
 
     .about-main-image {
@@ -752,6 +695,11 @@
       border-radius: 30px;
       position: relative;
       z-index: 2;
+      box-shadow: 0 20px 44px rgba(122, 90, 97, 0.12);
+    }
+
+    .about-main-image-mobile {
+      display: none;
     }
 
     .about-circle {
@@ -778,41 +726,37 @@
 
     .about-badge {
       position: absolute;
-      right: -22px;
-      bottom: 30px;
+      right: 24px;
+      bottom: 24px;
       z-index: 3;
-      background: var(--white);
-      border-radius: 20px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      box-shadow: var(--shadow);
-      min-width: 290px;
-    }
-
-    .about-badge .icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #eef4ed;
-      display: grid;
-      place-items: center;
-      color: #7f9b7a;
-      font-size: 24px;
-      flex-shrink: 0;
+      width: auto;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.52);
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(58, 58, 58, 0.08);
+      color: var(--brand);
+      text-align: left;
     }
 
     .about-badge strong {
       display: block;
-      font-family: "Playfair Display", serif;
-      font-size: 20px;
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      line-height: 1.15;
+      font-weight: 600;
       margin-bottom: 3px;
     }
 
     .about-badge small {
-      color: #8a8684;
-      font-size: 15px;
+      display: block;
+      color: var(--brand);
+      font-size: 11px;
+      line-height: 1.1;
+      letter-spacing: 0.06em;
+      opacity: 0.72;
     }
 
     .about-content h3 {
@@ -833,17 +777,17 @@
     }
 
     .about-cards-grid {
-      margin-top: 28px;
+      margin-top: 24px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 14px;
       align-items: stretch;
     }
 
     .about-col {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
     .col-label {
@@ -856,13 +800,13 @@
     }
 
     .about-card {
-      padding: 20px 18px;
+      padding: 16px 16px;
       display: flex;
-      gap: 16px;
-      min-height: 104px;
+      gap: 12px;
+      min-height: 88px;
       height: 100%;
       align-items: flex-start;
-      border-radius: 18px;
+      border-radius: 16px;
       border: 1px solid transparent;
     }
 
@@ -877,9 +821,9 @@
     }
 
     .about-card .icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       background: rgba(255,255,255,0.5);
       display: grid;
       place-items: center;
@@ -889,8 +833,8 @@
     }
 
     .about-card .icon svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       stroke: currentColor;
       fill: none;
       stroke-width: 1.9;
@@ -901,14 +845,14 @@
     .about-card strong {
       display: block;
       font-family: "Playfair Display", serif;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.18;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .about-card span {
       color: #8a8684;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.4;
     }
 
@@ -917,7 +861,7 @@
       align-items: center;
       gap: 22px;
       flex-wrap: wrap;
-      margin-top: 26px;
+      margin-top: 28px;
     }
 
     .about-footer p {
@@ -925,145 +869,6 @@
       font-style: italic;
       color: #a98d78;
       margin: 0;
-    }
-
-    /* Áreas */
-    .areas-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 26px;
-    }
-
-    .area-card {
-      min-height: 190px;
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.45);
-      border: 1px solid rgba(122,90,97,0.08);
-      transition: all 0.25s ease;
-      text-align: center;
-    }
-
-    .area-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-
-    .area-card .icon-box {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(216, 183, 190, 0.16), rgba(255, 255, 255, 0.72));
-      box-shadow:
-        inset 0 0 0 1px rgba(122, 90, 97, 0.08),
-        0 8px 18px rgba(122, 90, 97, 0.06);
-      display: grid;
-      place-items: center;
-      color: var(--brand);
-      margin-bottom: 20px;
-    }
-
-    .area-card .icon-box svg {
-      width: 26px;
-      height: 26px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.85;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .area-card h3 {
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    .area-quote {
-      background: var(--brand);
-      color: var(--white);
-      padding: 26px;
-      justify-content: center;
-    }
-
-    .area-quote p {
-      font-family: "Playfair Display", serif;
-      font-size: 28px;
-      line-height: 1.35;
-      font-style: italic;
-      text-align: center;
-    }
-
-    /* Diferenciais */
-    .diff-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 28px;
-    }
-
-    .diff-card {
-      grid-column: span 2;
-      padding: 38px 34px 34px;
-      min-height: 288px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.62);
-      border: 1px solid rgba(122,90,97,0.09);
-      box-shadow: 0 14px 30px rgba(58, 58, 58, 0.06);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .diff-card:nth-child(4) {
-      grid-column: 2 / span 2;
-    }
-
-    .diff-card:nth-child(5) {
-      grid-column: 4 / span 2;
-    }
-
-    .diff-card .icon-box {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 24px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(230, 217, 184, 0.26), rgba(216, 183, 190, 0.12));
-      box-shadow:
-        inset 0 0 0 1px rgba(122, 90, 97, 0.08),
-        0 10px 22px rgba(122, 90, 97, 0.08);
-      display: grid;
-      place-items: center;
-      color: var(--brand);
-    }
-
-    .diff-card .icon-box svg {
-      width: 27px;
-      height: 27px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .diff-card h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 24px;
-      line-height: 1.18;
-      margin-bottom: 16px;
-    }
-
-    .diff-card p {
-      color: var(--text-soft);
-      font-size: 17px;
-      line-height: 1.78;
-    }
-
-    .diff-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(122,90,97,0.13);
-      box-shadow: 0 22px 42px rgba(58, 58, 58, 0.09);
     }
 
     /* Depoimentos */
@@ -1338,6 +1143,19 @@
       flex-wrap: wrap;
     }
 
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
     .footer-left strong {
       display: block;
       font-family: "Playfair Display", serif;
@@ -1359,6 +1177,10 @@
       flex-wrap: wrap;
     }
 
+    .floating-whatsapp {
+      display: none;
+    }
+
     /* Responsive */
     @media (max-width: 1200px) {
       .hero-inner,
@@ -1369,10 +1191,6 @@
 
       .hero {
         background: var(--bg);
-      }
-
-      .hero-frame {
-        height: 560px;
       }
 
       .about-image-wrap {
@@ -1387,20 +1205,14 @@
         min-height: 520px;
       }
 
-      .areas-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .diff-grid,
       .testimonials-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .diff-card,
-      .diff-card:nth-child(4),
-      .diff-card:nth-child(5) {
-        grid-column: auto;
+      .how-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
     }
 
     @media (max-width: 980px) {
@@ -1522,6 +1334,18 @@
         text-overflow: ellipsis;
       }
 
+      .brand-subtitle {
+        font-size: 11px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .brand-credentials {
+        font-size: 9px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
       .menu-toggle {
         display: inline-flex;
         margin-left: auto;
@@ -1563,16 +1387,19 @@
         justify-content: space-between;
       }
 
-      .how-grid,
-      .diff-grid,
       .testimonials-grid {
         grid-template-columns: 1fr;
       }
 
+      .how-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+
       .hero-inner {
         min-height: auto;
-        padding: 28px 0 40px;
-        gap: 28px;
+        padding: 22px 0 40px;
+        gap: 20px;
       }
 
       .hero-content {
@@ -1580,11 +1407,21 @@
       }
 
       .hero-tag {
-        justify-content: center;
+        display: none;
       }
 
       .hero-tag::before {
         width: 28px;
+      }
+
+      .hero-desktop-title,
+      .hero-desktop-copy {
+        display: none;
+      }
+
+      .hero-mobile-title,
+      .hero-mobile-copy {
+        display: inline;
       }
 
       .hero h1,
@@ -1593,14 +1430,26 @@
         margin-right: auto;
       }
 
+      .hero h1 {
+        max-width: 560px;
+        margin-bottom: 14px;
+        font-size: 34px;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
       .hero p {
         max-width: 100%;
-        font-size: 18px;
+        margin-bottom: 22px;
+        font-size: 17px;
+        line-height: 1.52;
       }
 
       .hero-actions {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
+        margin-bottom: 0;
       }
 
       .btn-primary,
@@ -1608,71 +1457,131 @@
         width: 100%;
       }
 
+      .hero-actions .btn-primary {
+        width: min(100%, 420px);
+        min-height: 52px;
+        margin: 0 auto;
+        padding: 14px 22px;
+      }
+
       .hero-highlights {
+        display: grid;
         grid-template-columns: 1fr;
-        gap: 18px;
-        max-width: 100%;
+        gap: 12px;
+        max-width: 420px;
+        margin: 0 auto 18px;
       }
 
       .highlight-item {
         min-height: auto;
-        padding: 16px 16px 14px;
+        display: flex;
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.46);
+        border: 1px solid rgba(122, 90, 97, 0.08);
       }
 
       .hero-visual {
-        width: 100%;
-      }
-
-      .hero-frame {
-        width: min(100%, 420px);
-        height: 400px;
-        padding: 14px;
-        margin: 0 auto;
-      }
-
-      .hero-badge {
-        right: 10px;
-        left: 10px;
-        min-width: auto;
-        bottom: 16px;
+        display: none;
       }
 
       .highlight-item strong {
-        font-size: 19px;
+        font-size: 16px;
+        line-height: 1.2;
+        margin-bottom: 4px;
         min-height: 0;
       }
 
+      .highlight-item span {
+        display: block;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
       .how-card,
-      .diff-card,
       .testimonial-card {
         min-height: auto;
       }
 
       .about-main-image {
-        height: 480px;
+        height: 520px;
+      }
+
+      .about-main-image-desktop {
+        display: none;
+      }
+
+      .about-main-image-mobile {
+        display: block;
+      }
+
+      #sobre {
+        margin-top: 0;
+        padding-top: 48px;
+      }
+
+      .about-grid {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .about-mobile-heading {
+        order: 1;
+        display: block;
+        text-align: center;
+        max-width: 430px;
+        margin: 0 auto 24px;
+      }
+
+      .about-mobile-heading .section-tag {
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+
+      .about-mobile-heading .section-title {
+        margin-bottom: 0;
+        font-size: clamp(32px, 8vw, 42px);
+        line-height: 1.12;
+      }
+
+      .about-image-wrap {
+        order: 2;
+        max-width: 430px;
+        margin: 0 auto 26px;
+      }
+
+      .about-content {
+        order: 3;
+      }
+
+      .about-desktop-heading {
+        display: none;
       }
 
       .about-badge {
-        position: static;
-        margin-top: 16px;
-        min-width: auto;
-        padding: 16px 18px;
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        margin-top: 0;
+        padding: 9px 12px;
+        border-radius: 14px;
       }
 
       .about-badge strong {
-        font-size: 18px;
+        font-size: 13px;
+      }
+
+      .about-badge small {
+        font-size: 10px;
       }
 
       .about-cards-grid {
-        gap: 16px;
+        gap: 12px;
       }
 
       .about-card {
         min-height: auto;
-      }
-
-      .areas-grid {
-        grid-template-columns: 1fr;
       }
 
       .contact-card,
@@ -1694,8 +1603,43 @@
         align-items: flex-start;
       }
 
+      .footer-left {
+        align-items: flex-start;
+      }
+
       .footer-right {
         gap: 10px;
+      }
+
+      .floating-whatsapp {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 70;
+        width: 58px;
+        height: 58px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        background: var(--green);
+        border-radius: 999px;
+        box-shadow: 0 14px 30px rgba(122, 90, 97, 0.22);
+        transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .floating-whatsapp:hover,
+      .floating-whatsapp:focus-visible {
+        background: var(--green-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 34px rgba(122, 90, 97, 0.26);
+        outline: none;
+      }
+
+      .floating-whatsapp svg {
+        width: 28px;
+        height: 28px;
+        fill: currentColor;
       }
     }
 
@@ -1716,6 +1660,21 @@
       .brand-name {
         font-size: 16px;
         letter-spacing: 0.03em;
+      }
+
+      .brand-subtitle {
+        font-size: 10px;
+      }
+
+      .brand-credentials {
+        font-size: 8px;
+      }
+
+      .floating-whatsapp {
+        right: 16px;
+        bottom: 16px;
+        width: 54px;
+        height: 54px;
       }
 
       .menu-toggle {
@@ -1746,8 +1705,7 @@
 
       .section-subtitle,
       .about-content p,
-      .how-list li,
-      .diff-card p,
+      .how-card p,
       .testimonial-text,
       .contact-cta-box p {
         font-size: 16px;
@@ -1763,117 +1721,105 @@
         padding: 30px 24px 26px;
       }
 
-      .how-card-label {
-        padding: 10px 15px;
-        font-size: 11px;
-      }
-
-      .how-card-featured .how-card-label {
-        padding: 11px 16px;
-        font-size: 12px;
-      }
-
       .hero-tag,
       .section-tag {
         font-size: 12px;
       }
 
+      .hero-tag {
+        display: none;
+      }
+
       .hero h1 {
-        font-size: 32px;
-        line-height: 1.1;
+        max-width: 360px;
+        margin-bottom: 12px;
+        font-size: 29px;
+        line-height: 1.08;
       }
 
       .hero p {
+        max-width: 360px;
+        margin-bottom: 18px;
         font-size: 16px;
+        line-height: 1.48;
+      }
+
+      .hero-actions {
+        margin-bottom: 0;
+      }
+
+      .hero-actions .btn-primary {
+        min-height: 50px;
+        padding: 13px 18px;
+        font-size: 15px;
       }
 
       .section-subtitle-emphasis {
         font-size: 17px;
       }
 
-      .hero-frame {
-        width: min(100%, 360px);
-        height: auto;
-        padding: 12px;
-        border-radius: 28px;
-      }
-
-      .hero-frame img {
-        height: auto;
-        aspect-ratio: 4 / 5;
-        border-radius: 20px;
-      }
-
-      .hero-badge {
-        position: static;
-        margin: 14px 6px 0;
-        padding: 14px 16px;
-        border-radius: 18px;
-        min-width: 0;
-      }
-
-      .hero-badge-icon {
-        width: 38px;
-        height: 38px;
-      }
-
-      .hero-badge strong {
-        font-size: 14px;
-      }
-
-      .hero-badge small {
-        font-size: 12px;
-      }
-
-      .hero-dot.top {
-        top: 10px;
-        right: -8px;
-      }
-
-      .hero-dot.bottom {
-        display: none;
-      }
-
       .hero-highlights {
-        gap: 16px;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .highlight-item {
+        padding: 13px 14px;
+      }
+
+      .highlight-item strong {
+        font-size: 15px;
+      }
+
+      .about-main-image {
+        height: 390px;
+        border-radius: 24px;
+      }
+
+      #sobre {
+        margin-top: 0;
+        padding-top: 40px;
+      }
+
+      .about-image-wrap {
+        margin-top: 0;
+        margin-bottom: 22px;
       }
 
       .how-card,
-      .diff-card,
       .testimonial-card,
-      .area-card,
       .about-card {
         padding: 22px 18px;
       }
 
-      .diff-card .icon-box {
-        width: 56px;
-        height: 56px;
-        margin-bottom: 20px;
-      }
-
-      .diff-card .icon-box svg {
-        width: 25px;
-        height: 25px;
+      .about-card {
+        padding: 14px 14px;
+        gap: 10px;
       }
 
       .about-card strong {
-        font-size: 18px;
+        font-size: 17px;
       }
 
       .about-card span {
-        font-size: 15px;
+        font-size: 13px;
       }
 
-      .area-card .icon-box {
-        width: 52px;
-        height: 52px;
-        margin-bottom: 18px;
+      .about-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-top: 22px;
       }
 
-      .area-card .icon-box svg {
-        width: 24px;
-        height: 24px;
+      .about-footer p {
+        text-align: center;
+      }
+
+      .about-footer .btn-primary {
+        width: min(100%, 420px);
+        margin: 0 auto;
+        padding: 14px 20px;
       }
 
       .contact-item p,
@@ -1901,7 +1847,11 @@
     <div class="container site-header-inner">
       <a href="#inicio" class="brand">
         <img src="Icone.png.png" alt="Logo Carolyna Vieira" class="logo-img" />
-        <strong class="brand-name">Carolyna Vieira</strong>
+        <span>
+          <strong class="brand-name">Carolyna Vieira</strong>
+          <span class="brand-subtitle">Médica Especialista</span>
+          <span class="brand-credentials">CRM-GO 25493 · RQE 19119</span>
+        </span>
       </a>
 
       <button
@@ -1924,8 +1874,6 @@
         <a href="#inicio">Início</a>
         <a href="#sobre">Sobre</a>
         <a href="#atendimento">Atendimento</a>
-        <a href="#areas">Áreas</a>
-        <a href="#diferenciais">Diferenciais</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#contato">Contato</a>
 
@@ -1957,25 +1905,24 @@
           <div class="hero-tag">ACOMPANHAMENTO EM DIABETES</div>
 
           <h1>
-            Controle do diabetes
-            <br />
-            <span class="hero-tone-soft">com acompanhamento contínuo e individualizado</span>
+            <span class="hero-desktop-title">
+              Diabetes sob controle,<br />
+              <span class="hero-highlight">com qualidade de vida, cuidado contínuo e personalizado.</span>
+            </span>
+            <span class="hero-mobile-title">
+              Diabetes sob controle,<br />
+              <span class="hero-highlight">com qualidade de vida, cuidado contínuo e personalizado.</span>
+            </span>
           </h1>
 
           <p>
-            Acompanhamento que vai além da medicação e organiza sua rotina, alimentação e decisões ao longo do tempo.
+            <span class="hero-desktop-copy">
+              Acompanhamento médico para organizar tratamento, rotina e decisões ao longo do tempo.
+            </span>
+            <span class="hero-mobile-copy">
+              Acompanhamento médico para organizar tratamento, rotina e decisões ao longo do tempo.
+            </span>
           </p>
-
-          <div class="hero-actions">
-            <a
-              class="btn-primary"
-              href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Agendar consulta pelo WhatsApp
-            </a>
-          </div>
 
           <div class="hero-highlights">
             <div class="highlight-item">
@@ -1990,12 +1937,24 @@
 
             <div class="highlight-item">
               <strong>Cuidado coordenado</strong>
-              <span>Quando necessário</span>
+              <span>Com outras especialidades</span>
             </div>
           </div>
+
+          <div class="hero-actions">
+            <a
+              class="btn-primary"
+              href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Agendar avaliação pelo WhatsApp
+            </a>
+          </div>
+
         </div>
 
-        <div class="hero-visual">
+        <div class="hero-visual visual-reveal hero-visual-reveal">
           <div class="hero-frame">
             <span class="hero-dot top"></span>
             <span class="hero-dot bottom"></span>
@@ -2006,9 +1965,8 @@
             />
 
             <div class="hero-badge">
-              <div class="hero-badge-icon">✓</div>
               <div>
-                <strong>CRM 25493</strong>
+                <strong>CRM-GO 25493</strong>
                 <small>RQE 19119</small>
               </div>
             </div>
@@ -2017,75 +1975,34 @@
       </div>
     </section>
 
-    <section class="section section-soft" id="atendimento">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-tag">Como funciona</div>
-          <h2 class="section-title">A diferença entre tratar partes e cuidar do todo</h2>
-          <p class="section-subtitle section-subtitle-emphasis">
-            No diabetes, não basta tratar números — é preciso organizar todo o cuidado.
-          </p>
-        </div>
-
-        <div class="how-grid">
-          <article class="how-card how-card-neutral card fade-in">
-            <div class="how-card-head">
-              <p class="how-card-label">Cuidado fragmentado</p>
-            </div>
-            <ul class="how-list">
-              <li><strong>Cada problema</strong> é tratado separadamente</li>
-              <li><strong>Sua história</strong> precisa ser repetida</li>
-              <li><strong>Orientações</strong> podem se desencontrar</li>
-              <li><strong>Encaminhamentos</strong> nem sempre se conectam</li>
-            </ul>
-          </article>
-
-          <article class="how-card how-card-featured card fade-in">
-            <div class="how-card-head">
-              <p class="how-card-label">Com o cuidado integral</p>
-            </div>
-            <ul class="how-list">
-              <li><strong>Sua saúde</strong> passa a ser vista em conjunto</li>
-              <li><strong>Existe continuidade</strong> ao longo do tempo</li>
-              <li><strong>As decisões</strong> ficam mais claras</li>
-              <li><strong>O cuidado</strong> segue integrado, mesmo com outros profissionais</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="how-quote">
-          <p>
-            Um cuidado que acompanha, organiza e dá direção ao tratamento.
-          </p>
-
-          <a
-            class="btn-primary"
-            href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Agendar consulta
-          </a>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="sobre">
       <div class="container about-grid">
-        <div class="about-image-wrap">
+        <div class="about-mobile-heading">
+          <div class="section-tag">Sobre a médica</div>
+
+          <h2 class="section-title">
+            Quem vai acompanhar você
+          </h2>
+        </div>
+
+        <div class="about-image-wrap about-image-reveal">
           <span class="about-circle top"></span>
 
           <img
-            class="about-main-image"
-            src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1000&q=80"
-            alt="Retrato profissional de médica"
+            class="about-main-image about-main-image-desktop"
+            src="Carol3.png"
+            alt="Dra. Carolyna Vieira"
+          />
+          <img
+            class="about-main-image about-main-image-mobile"
+            src="Carol1.png"
+            alt="Dra. Carolyna Vieira"
           />
 
           <div class="about-badge">
-            <div class="icon">⚕</div>
             <div>
-              <strong>Medica Especialista</strong>
-              <small>Cuidado integral e contínuo</small>
+              <strong>CRM-GO 25493</strong>
+              <small>RQE 19119</small>
             </div>
           </div>
 
@@ -2093,11 +2010,13 @@
         </div>
 
         <div class="about-content">
-          <div class="section-tag" style="justify-content:flex-start; margin-bottom:18px;">Sobre a médica</div>
+          <div class="about-desktop-heading">
+            <div class="section-tag" style="justify-content:flex-start; margin-bottom:18px;">Sobre a médica</div>
 
-          <h2 class="section-title" style="text-align:left; margin-bottom:16px; max-width:580px; font-size:clamp(32px, 3vw, 42px); line-height:1.12;">
-            Quem vai acompanhar você
-          </h2>
+            <h2 class="section-title" style="text-align:left; margin-bottom:16px; max-width:580px; font-size:clamp(32px, 3vw, 42px); line-height:1.12;">
+              Quem vai acompanhar você
+            </h2>
+          </div>
 
           <h3>Cuidado integral e acompanhamento contínuo em todas as fases da sua saúde</h3>
 
@@ -2111,49 +2030,7 @@
 
           <div class="about-cards-grid">
             <div class="about-col">
-              <div class="col-label">Principais Atuações</div>
-
-              <div class="about-card pink">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Diabetes &amp; Obesidade</strong>
-                  <span>Hapvida</span>
-                </div>
-              </div>
-
-              <div class="about-card pink">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
-                    <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Docente da Clínica da Família</strong>
-                  <span>UniEVANGÉLICA</span>
-                </div>
-              </div>
-
-              <div class="about-card pink">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M3 10.5 12 3l9 7.5"></path>
-                    <path d="M5 9.5V21h14V9.5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Médica de Atenção Domiciliar</strong>
-                  <span>IPASGO</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="about-col">
-              <div class="col-label">Formação</div>
+              <div class="col-label">Formação e experiência</div>
 
               <div class="about-card gold">
                 <div class="icon">
@@ -2195,9 +2072,52 @@
                 </div>
               </div>
             </div>
+
+            <div class="about-col">
+              <div class="col-label">Como posso te ajudar</div>
+
+              <div class="about-card pink">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Diabetes &amp; Obesidade</strong>
+                  <span>Hapvida</span>
+                </div>
+              </div>
+
+              <div class="about-card pink">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
+                    <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Docente da Clínica da Família</strong>
+                  <span>UniEVANGÉLICA</span>
+                </div>
+              </div>
+
+              <div class="about-card pink">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 10.5 12 3l9 7.5"></path>
+                    <path d="M5 9.5V21h14V9.5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Médica de Atenção Domiciliar</strong>
+                  <span>IPASGO</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="about-footer">
+            <p>“Cuidar é caminhar junto.”</p>
             <a
               class="btn-primary"
               href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
@@ -2206,190 +2126,74 @@
             >
               Agendar consulta pelo WhatsApp
             </a>
-            <p>“Cuidar é caminhar junto.”</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="areas">
+    <section class="section section-soft" id="atendimento">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-tag">Especialidades</div>
-          <h2 class="section-title">Áreas de atuação</h2>
-          <p class="section-subtitle">
-            Acompanhamento especializado para diversas condições de saúde, com cuidado contínuo e personalizado.
+          <div class="section-tag">Porque funciona</div>
+          <h2 class="section-title">O que muda com um cuidado integral</h2>
+          <p class="section-subtitle section-subtitle-emphasis">
+            No diabetes, o acompanhamento contínuo ajuda a organizar decisões, rotina e cuidado ao longo do tempo.
           </p>
         </div>
 
-        <div class="areas-grid">
-          <article class="area-card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19.5 13.5c1.74-1.74 2.08-4.41.52-6.17a4.49 4.49 0 0 0-6.36-.24L12 8.67l-1.66-1.58a4.49 4.49 0 0 0-6.36.24c-1.56 1.76-1.22 4.43.52 6.17L12 21l7.5-7.5Z"></path>
-                <path d="M8 12h2l1.2-2.2 2.1 5.2 1.2-3H16"></path>
+        <div class="how-grid">
+          <article class="how-card card fade-in">
+            <div class="how-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 12a9 9 0 0 1-15.3 6.4L3 16"></path>
+                <path d="M3 21v-5h5"></path>
+                <path d="M3 12a9 9 0 0 1 15.3-6.4L21 8"></path>
+                <path d="M21 3v5h-5"></path>
               </svg>
             </div>
-            <h3>Hipertensão</h3>
+            <h3>Continuidade no cuidado</h3>
+            <p>Seu histórico e evolução são acompanhados ao longo do tempo.</p>
           </article>
 
-          <article class="area-card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3c3.5 4.1 5.5 7 5.5 10a5.5 5.5 0 1 1-11 0c0-3 2-5.9 5.5-10Z"></path>
-                <path d="M12 8v6"></path>
-                <path d="M9 11h6"></path>
+          <article class="how-card card fade-in">
+            <div class="how-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 2v4"></path>
+                <path d="M12 18v4"></path>
+                <path d="M2 12h4"></path>
+                <path d="M18 12h4"></path>
               </svg>
             </div>
-            <h3>Diabetes</h3>
+            <h3>Mais clareza nas decisões</h3>
+            <p>O cuidado é organizado e direcionado conforme sua necessidade.</p>
           </article>
 
-          <article class="area-card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 6h10"></path>
-                <path d="M6 9h12"></path>
-                <path d="M5 12h14"></path>
-                <path d="M7 15h10"></path>
-                <path d="M9 18h6"></path>
+          <article class="how-card card fade-in">
+            <div class="how-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.8 5.4a5.2 5.2 0 0 0-7.4 0L12 6.8l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21l8.8-8.2a5.2 5.2 0 0 0 0-7.4Z"></path>
+                <path d="M4 12h4l2-3 3 6 2-3h5"></path>
               </svg>
             </div>
-            <h3>Obesidade</h3>
+            <h3>Visão integral da saúde</h3>
+            <p>Você é acompanhado como um todo, não apenas por sintomas isolados.</p>
           </article>
 
-          <article class="area-card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="3.5"></circle>
-                <path d="M12 2v3"></path>
-                <path d="M12 19v3"></path>
-                <path d="M2 12h3"></path>
-                <path d="M19 12h3"></path>
-                <path d="m4.9 4.9 2.1 2.1"></path>
-                <path d="m17 17 2.1 2.1"></path>
-                <path d="m19.1 4.9-2.1 2.1"></path>
-                <path d="m7 17-2.1 2.1"></path>
+          <article class="how-card card fade-in">
+            <div class="how-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 11a4 4 0 1 0-8 0"></path>
+                <path d="M3 21a7 7 0 0 1 18 0"></path>
+                <path d="M17 8h3"></path>
+                <path d="M18.5 6.5v3"></path>
+                <path d="M5 8H2"></path>
+                <path d="M3.5 6.5v3"></path>
               </svg>
             </div>
-            <h3>Doenças da tireoide</h3>
-          </article>
-
-          <article class="area-card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 12h3l2-3 3.5 7 2.5-4H17l2-3 2 3"></path>
-              </svg>
-            </div>
-            <h3>Dor crônica</h3>
-          </article>
-
-          <article class="area-card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="8" r="3.5"></circle>
-                <path d="M6.5 20a5.5 5.5 0 0 1 11 0"></path>
-              </svg>
-            </div>
-            <h3>Saúde do idoso</h3>
-          </article>
-
-          <article class="area-card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M9 12l2 2 4-4"></path>
-                <path d="M12 3l7 3v6c0 4.2-2.7 6.8-7 9-4.3-2.2-7-4.8-7-9V6l7-3Z"></path>
-              </svg>
-            </div>
-            <h3>Check-up e prevenção</h3>
-          </article>
-
-          <article class="area-card area-quote">
-            <p>“Cuidado completo para toda a família”</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="diferenciais">
-      <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-tag">Por que nos escolher</div>
-          <h2 class="section-title">Diferenciais do atendimento</h2>
-        </div>
-
-        <div class="diff-grid">
-          <article class="diff-card card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="8.5"></circle>
-                <path d="M12 7.5v5l3 2"></path>
-              </svg>
-            </div>
-            <h3>Atendimento sem pressa</h3>
-            <p>
-              Cada consulta é conduzida com calma e atenção, respeitando o seu ritmo e garantindo que todas as suas dúvidas sejam esclarecidas.
-            </p>
-          </article>
-
-          <article class="diff-card card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21 3v6h-6"></path>
-                <path d="M3 21v-6h6"></path>
-                <path d="M21 9a9 9 0 0 0-15-3.36L3 9"></path>
-                <path d="M3 15a9 9 0 0 0 15 3.36L21 15"></path>
-              </svg>
-            </div>
-            <h3>Acompanhamento contínuo</h3>
-            <p>
-              Sua história clínica é conhecida e acompanhada ao longo do tempo, sem precisar se repetir a cada nova consulta.
-            </p>
-          </article>
-
-          <article class="diff-card card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="7.5"></circle>
-                <circle cx="12" cy="12" r="2.5"></circle>
-                <path d="M12 2v3"></path>
-                <path d="M12 19v3"></path>
-                <path d="M2 12h3"></path>
-                <path d="M19 12h3"></path>
-              </svg>
-            </div>
-            <h3>Visão integral do paciente</h3>
-            <p>
-              Você é visto como um todo — não apenas como um sintoma. Consideramos seus hábitos, emoções, relações e contexto de vida.
-            </p>
-          </article>
-
-          <article class="diff-card card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="6" y="4" width="12" height="16" rx="2"></rect>
-                <path d="M9 4.5h6"></path>
-                <path d="m9.5 13 1.8 1.8 3.7-3.8"></path>
-              </svg>
-            </div>
-            <h3>Cuidado baseado em evidências</h3>
-            <p>
-              Todas as decisões clínicas são embasadas nos melhores estudos científicos disponíveis, garantindo um atendimento seguro e eficaz.
-            </p>
-          </article>
-
-          <article class="diff-card card fade-in">
-            <div class="icon-box">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 18H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-4 3v-3Z"></path>
-                <path d="M8.5 11h.01"></path>
-                <path d="M12 11h.01"></path>
-                <path d="M15.5 11h.01"></path>
-              </svg>
-            </div>
-            <h3>Escuta ativa e humanizada</h3>
-            <p>
-              A escuta é o ponto de partida de tudo. Aqui, sua fala importa e guia o cuidado que você recebe.
-            </p>
+            <h3>Coordenação entre profissionais</h3>
+            <p>Quando necessário, o cuidado continua integrado com outros especialistas.</p>
           </article>
         </div>
       </div>
@@ -2569,8 +2373,11 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <strong>Dra. Carolyna</strong>
-        <span>Medicina de Família e Comunidade</span>
+        <img src="Icone.png.png" alt="Logo Carolyna Vieira" class="footer-logo" />
+        <div>
+          <strong>Carolyna Vieira</strong>
+          <span>Médica Especialista</span>
+        </div>
       </div>
 
       <div class="footer-right">
@@ -2579,6 +2386,19 @@
       </div>
     </div>
   </footer>
+
+  <a
+    class="floating-whatsapp"
+    href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Agendar consulta pelo WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 4A10.9 10.9 0 0 0 12.2 1 10.9 10.9 0 0 0 2.8 16.8L1 23l6.4-1.7a11 11 0 0 0 4.8 1.1h.1A10.9 10.9 0 0 0 20 4Zm-7.8 16.5a9 9 0 0 1-4.5-1.2l-.3-.2-3.8 1 1-3.7-.2-.3a9.1 9.1 0 1 1 7.8 4.4Zm5-6.8c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1a7.3 7.3 0 0 1-2.2-1.4 8.3 8.3 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.6l.4-.4c.1-.2.2-.3.3-.5.1-.1 0-.3 0-.4L9.4 7c-.1-.3-.3-.3-.5-.3h-.4c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.7 4.2.7.2 1.2.4 1.6.5.7.2 1.3.2 1.8.1.6-.1 1.6-.7 1.8-1.3.2-.7.2-1.2.2-1.3 0-.2-.2-.2-.5-.4Z"></path>
+    </svg>
+  </a>
+
   <script src="script.js"></script>
 </body>
 </html>
