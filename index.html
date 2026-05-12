@@ -8,13 +8,28 @@
     name="description"
     content="Atendimento médico com escuta, continuidade e foco no cuidado integral da sua saúde."
   />
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wphqj5gvgt");
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-    rel="stylesheet"
+    rel="preload"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
 
   <style>
     :root {
@@ -1846,7 +1861,13 @@
   <header class="site-header">
     <div class="container site-header-inner">
       <a href="#inicio" class="brand">
-        <img src="Icone.png.png" alt="Logo Carolyna Vieira" class="logo-img" />
+        <img
+          src="Icone-small.png"
+          alt="Logo Carolyna Vieira"
+          class="logo-img"
+          width="128"
+          height="128"
+        />
         <span>
           <strong class="brand-name">Carolyna Vieira</strong>
           <span class="brand-subtitle">Médica Especialista</span>
@@ -1959,10 +1980,17 @@
             <span class="hero-dot top"></span>
             <span class="hero-dot bottom"></span>
 
-            <img
-              src="Carol1.png"
-              alt="Dra. Carolyna Vieira"
-            />
+            <picture>
+              <source media="(max-width: 768px)" srcset="Carol1-mobile.jpg" />
+              <img
+                src="Carol1-hero.jpg"
+                alt="Dra. Carolyna Vieira"
+                width="960"
+                height="640"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
 
             <div class="hero-badge">
               <div>
@@ -1988,16 +2016,18 @@
         <div class="about-image-wrap about-image-reveal">
           <span class="about-circle top"></span>
 
-          <img
-            class="about-main-image about-main-image-desktop"
-            src="Carol3.png"
-            alt="Dra. Carolyna Vieira"
-          />
-          <img
-            class="about-main-image about-main-image-mobile"
-            src="Carol1.png"
-            alt="Dra. Carolyna Vieira"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcset="Carol1-mobile.jpg" />
+            <img
+              class="about-main-image"
+              src="Carol3-about.jpg"
+              alt="Dra. Carolyna Vieira"
+              width="720"
+              height="1080"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
 
           <div class="about-badge">
             <div>
@@ -2373,7 +2403,15 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <img src="Icone.png.png" alt="Logo Carolyna Vieira" class="footer-logo" />
+        <img
+          src="Icone-small.png"
+          alt="Logo Carolyna Vieira"
+          class="footer-logo"
+          width="128"
+          height="128"
+          loading="lazy"
+          decoding="async"
+        />
         <div>
           <strong>Carolyna Vieira</strong>
           <span>Médica Especialista</span>
