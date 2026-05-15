@@ -5,12 +5,16 @@ Monorepo de sites estaticos da Dra. Carolyna Vieira, preparado para publicacao n
 ## Estrutura
 
 ```txt
+index.html
+assets/
 principal/
 diabetes/
 checkup/
 emagrecimento/
 .github/workflows/
 ```
+
+Os arquivos `index.html` e `assets/` na raiz espelham o site de `principal/` para compatibilidade com o deploy Git da Hostinger, que publica a raiz do repositorio diretamente em `public_html/`.
 
 ## Deploy
 
