@@ -21,5 +21,10 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftp
-          server-dir: /public_html/diabetes/
-          timeout: 60000
+          local-dir: ./
+          server-dir: diabetes/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
