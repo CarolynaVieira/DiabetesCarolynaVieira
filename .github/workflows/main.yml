@@ -19,4 +19,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /domains/carolynavieira.com.br/public_html/diabetes/
+          port: 21
+          protocol: ftp
+          server-dir: /public_html/diabetes/
+          timeout: 60000
