@@ -1,50 +1,36 @@
-# Diabetes Carolyna Vieira
+# Carolyna Vieira Sites
 
-Site estatico publicado pela Hostinger a partir deste repositorio GitHub.
+Monorepo de sites estaticos da Dra. Carolyna Vieira, preparado para publicacao na Hostinger via GitHub Actions e FTP.
 
-## Fluxo de atualizacao
-
-1. Edite os arquivos no VS Code.
-2. Salve e teste localmente.
-3. Envie as alteracoes para o GitHub:
-
-```bash
-git status
-git add .
-git commit -m "Descreva a alteracao"
-git push origin main
-```
-
-4. No hPanel da Hostinger, abra:
+## Estrutura
 
 ```txt
-carolynavieira.com.br > Avancado > GIT
+principal/
+diabetes/
+checkup/
+emagrecimento/
+.github/workflows/
 ```
 
-5. Na linha do repositorio, clique nos tres pontos e execute o deploy.
+## Deploy
 
-## Publicacao
+O workflow `.github/workflows/deploy.yml` publica automaticamente a branch `main` usando `SamKirkland/FTP-Deploy-Action@v4.4.0`.
 
-O deploy da Hostinger usa:
+Configure estes secrets no GitHub:
 
 ```txt
-Repositorio: https://github.com/CarolynaVieira/DiabetesCarolynaVieira.git
-Branch: main
-Diretorio: diabetes
+FTP_SERVER
+FTP_USERNAME
+FTP_PASSWORD
 ```
 
-Isso publica o site em:
+Destinos no FTP da Hostinger:
 
 ```txt
-public_html/diabetes
+principal/      -> public_html/
+diabetes/       -> public_html/diabetes/
+checkup/        -> public_html/checkup/
+emagrecimento/  -> public_html/emagrecimento/
 ```
 
-que e a pasta usada pelo subdominio:
-
-```txt
-diabetes.carolynavieira.com.br
-```
-
-## Observacao
-
-Nao use FTP como fluxo principal neste projeto. O GitHub deve ser a fonte oficial do site.
+Cada pasta deve funcionar de forma independente, com seus proprios arquivos e assets.

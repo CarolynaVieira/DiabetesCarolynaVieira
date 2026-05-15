@@ -815,13 +815,8 @@
       align-items: stretch;
     }
 
-    .about-col {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     .col-label {
+      grid-column: 1 / -1;
       color: #9b7d66;
       letter-spacing: 0.12em;
       font-size: 14px;
@@ -839,11 +834,6 @@
       align-items: flex-start;
       border-radius: 16px;
       border: 1px solid transparent;
-    }
-
-    .about-card.pink {
-      background: #f3ecec;
-      border-color: #e8dede;
     }
 
     .about-card.gold {
@@ -1935,7 +1925,7 @@
     <div class="container site-header-inner">
       <a href="#inicio" class="brand">
         <img
-          src="Icone-small.png"
+          src="assets/Icone-small.png"
           alt="Logo Carolyna Vieira"
           class="logo-img"
           width="128"
@@ -2054,9 +2044,9 @@
             <span class="hero-dot bottom"></span>
 
             <picture>
-              <source media="(max-width: 768px)" srcset="Carol1-mobile.jpg" />
+              <source media="(max-width: 768px)" srcset="assets/Carol1-mobile.jpg" />
               <img
-                src="Carol1-hero.jpg"
+                src="assets/Carol1-hero.jpg"
                 alt="Dra. Carolyna Vieira"
                 width="960"
                 height="640"
@@ -2090,10 +2080,10 @@
           <span class="about-circle top"></span>
 
           <picture>
-            <source media="(max-width: 768px)" srcset="Carol1-mobile.jpg" />
+            <source media="(max-width: 768px)" srcset="assets/Carol1-mobile.jpg" />
             <img
               class="about-main-image"
-              src="Carol3-about.jpg"
+              src="assets/Carol3-about.jpg"
               alt="Dra. Carolyna Vieira"
               width="720"
               height="1080"
@@ -2132,89 +2122,58 @@
           </p>
 
           <div class="about-cards-grid">
-            <div class="about-col">
-              <div class="col-label">Formação e experiência</div>
+            <div class="col-label">Formação e Experiências</div>
 
-              <div class="about-card gold">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <path d="M14 2v6h6"></path>
-                    <path d="M8 13h8"></path>
-                    <path d="M8 17h5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Bacharel em Medicina</strong>
-                  <span>Universidade Federal de Goiás</span>
-                </div>
+            <div class="about-card gold">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <path d="M14 2v6h6"></path>
+                  <path d="M8 13h8"></path>
+                  <path d="M8 17h5"></path>
+                </svg>
               </div>
-
-              <div class="about-card gold">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="8" r="5"></circle>
-                    <path d="m8.2 12.9-1.7 8.1L12 17.8l5.5 3.2-1.7-8.1"></path>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Residência em MFC</strong>
-                  <span>UniEVANGÉLICA</span>
-                </div>
-              </div>
-
-              <div class="about-card gold">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Especialização em Endocrinologia</strong>
-                  <span>Sanar</span>
-                </div>
+              <div>
+                <strong>Bacharel em Medicina</strong>
+                <span>Universidade Federal de Goiás</span>
               </div>
             </div>
 
-            <div class="about-col">
-              <div class="col-label">Como posso te ajudar</div>
-
-              <div class="about-card pink">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Diabetes &amp; Obesidade</strong>
-                  <span>Hapvida</span>
-                </div>
+            <div class="about-card gold">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="8" r="5"></circle>
+                  <path d="m8.2 12.9-1.7 8.1L12 17.8l5.5 3.2-1.7-8.1"></path>
+                </svg>
               </div>
-
-              <div class="about-card pink">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
-                    <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Docente da Clínica da Família</strong>
-                  <span>UniEVANGÉLICA</span>
-                </div>
+              <div>
+                <strong>Residência em MFC</strong>
+                <span>UniEVANGÉLICA</span>
               </div>
+            </div>
 
-              <div class="about-card pink">
-                <div class="icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M3 10.5 12 3l9 7.5"></path>
-                    <path d="M5 9.5V21h14V9.5"></path>
-                  </svg>
-                </div>
-                <div>
-                  <strong>Médica de Atenção Domiciliar</strong>
-                  <span>IPASGO</span>
-                </div>
+            <div class="about-card gold">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <div>
+                <strong>Especialização em Endocrinologia</strong>
+                <span>Sanar</span>
+              </div>
+            </div>
+
+            <div class="about-card gold">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
+                  <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path>
+                </svg>
+              </div>
+              <div>
+                <strong>Docente da Clínica da Família</strong>
+                <span>UniEVANGÉLICA</span>
               </div>
             </div>
           </div>
@@ -2477,7 +2436,7 @@
     <div class="container footer-inner">
       <div class="footer-left">
         <img
-          src="Icone-small.png"
+          src="assets/Icone-small.png"
           alt="Logo Carolyna Vieira"
           class="footer-logo"
           width="128"
@@ -2510,6 +2469,6 @@
     </svg>
   </a>
 
-  <script src="script.js"></script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
