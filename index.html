@@ -619,87 +619,138 @@
     }
 
     /* Como funciona */
-    .how-grid {
+    #diferenciais {
+      padding: 52px 0 66px;
+    }
+
+    #diferenciais .section-title-wrap {
+      margin-bottom: 20px;
+    }
+
+    #diferenciais .section-title {
+      max-width: 680px;
+      margin: 0 auto 9px;
+      font-size: clamp(35px, 2.75vw, 40px);
+      line-height: 1.1;
+    }
+
+    #diferenciais .section-subtitle {
+      max-width: 640px;
+      font-size: 18px;
+      line-height: 1.62;
+    }
+
+    .how-timeline {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 24px;
-      align-items: stretch;
-      max-width: 1160px;
+      grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr);
+      column-gap: 6px;
+      row-gap: 42px;
+      max-width: 620px;
       margin: 0 auto;
-    }
-
-    .how-card {
-      min-height: 270px;
-      padding: 32px 26px 30px;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      gap: 18px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 239, 234, 0.92));
-      border: 1px solid rgba(122, 90, 97, 0.1);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 16px 34px rgba(122, 90, 97, 0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      overflow: hidden;
+      padding-bottom: 20px;
     }
 
-    .how-card::before {
+    .how-timeline::before {
       content: "";
       position: absolute;
-      inset: 0 0 auto 0;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(122, 90, 97, 0.9), rgba(168, 191, 163, 0.85));
+      top: 16px;
+      bottom: 44px;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(
+        180deg,
+        rgba(122, 90, 97, 0),
+        rgba(122, 90, 97, 0.045) 16%,
+        rgba(122, 90, 97, 0.035) 82%,
+        rgba(122, 90, 97, 0)
+      );
+      opacity: 0.58;
+      transform: translateX(-50%);
     }
 
-    .how-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(122, 90, 97, 0.18);
-      box-shadow: 0 24px 48px rgba(122, 90, 97, 0.13);
+    .timeline-item {
+      display: contents;
     }
 
-    .how-icon {
-      width: 72px;
-      height: 72px;
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 22px;
-      color: var(--brand);
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(168, 191, 163, 0.28);
-      box-shadow: 0 12px 24px rgba(122, 90, 97, 0.08);
+    .timeline-marker {
+      width: 5px;
+      height: 5px;
+      grid-column: 2;
+      justify-self: center;
+      align-self: start;
+      margin-top: 22px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      border: 1px solid rgba(122, 90, 97, 0.18);
+      box-shadow: 0 0 0 4px rgba(245, 239, 234, 0.78);
       position: relative;
       z-index: 1;
     }
 
-    .how-icon svg {
-      width: 36px;
-      height: 36px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .timeline-item:nth-child(1) .timeline-marker,
+    .timeline-item:nth-child(2) .timeline-marker {
+      grid-row: 1;
     }
 
-    .how-card h3 {
-      margin: 6px 0 0;
+    .timeline-item:nth-child(3) .timeline-marker,
+    .timeline-item:nth-child(4) .timeline-marker {
+      grid-row: 2;
+    }
+
+    .timeline-content {
+      max-width: 270px;
+    }
+
+    .timeline-item:nth-child(1) .timeline-content,
+    .timeline-item:nth-child(3) .timeline-content {
+      grid-column: 1;
+      justify-self: end;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(2) .timeline-content,
+    .timeline-item:nth-child(4) .timeline-content {
+      grid-column: 3;
+      justify-self: start;
+      text-align: left;
+    }
+
+    .timeline-item:nth-child(1) .timeline-content,
+    .timeline-item:nth-child(2) .timeline-content {
+      grid-row: 1;
+    }
+
+    .timeline-item:nth-child(3) .timeline-content,
+    .timeline-item:nth-child(4) .timeline-content {
+      grid-row: 2;
+    }
+
+    .timeline-number {
+      display: block;
+      color: var(--brand);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      line-height: 1;
+      opacity: 0.34;
+      margin-bottom: 6px;
+    }
+
+    .timeline-content h3 {
+      margin: 0;
       font-family: "Playfair Display", serif;
-      font-size: 24px;
-      line-height: 1.18;
+      font-size: 20px;
+      line-height: 1.13;
       font-weight: 600;
       color: var(--text);
     }
 
-    .how-card p {
-      margin: 0;
+    .timeline-content p {
+      margin: 5px 0 0;
       color: var(--text-soft);
-      font-size: 16px;
-      line-height: 1.65;
+      font-size: 15px;
+      line-height: 1.48;
     }
 
     /* Sobre */
@@ -1308,10 +1359,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .how-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
     }
 
     @media (max-width: 980px) {
@@ -1490,9 +1537,49 @@
         grid-template-columns: 1fr;
       }
 
-      .how-grid {
-        grid-template-columns: 1fr;
-        max-width: 520px;
+      #diferenciais {
+        padding: 50px 0 58px;
+      }
+
+      #diferenciais .section-title {
+        font-size: clamp(34px, 5vw, 38px);
+        line-height: 1.1;
+      }
+
+      #diferenciais .section-subtitle {
+        max-width: 620px;
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      #diferenciais .timeline-item {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 12px;
+        min-height: 90px;
+      }
+
+      #diferenciais .how-timeline {
+        display: block;
+        max-width: 620px;
+      }
+
+      #diferenciais .how-timeline::before {
+        left: 14px;
+        bottom: 38px;
+      }
+
+      #diferenciais .timeline-marker {
+        grid-column: 1;
+      }
+
+      #diferenciais .timeline-content,
+      #diferenciais .timeline-item:nth-child(odd) .timeline-content,
+      #diferenciais .timeline-item:nth-child(even) .timeline-content {
+        grid-column: 2;
+        justify-self: start;
+        max-width: 100%;
+        text-align: left;
       }
 
       .hero-inner {
@@ -1598,7 +1685,6 @@
         line-height: 1.35;
       }
 
-      .how-card,
       .testimonial-card {
         min-height: auto;
       }
@@ -1785,7 +1871,7 @@
 
       .section-subtitle,
       .about-content p,
-      .how-card p,
+      .timeline-content p,
       .testimonial-text,
       .contact-cta-box p {
         font-size: 16px;
@@ -1794,11 +1880,6 @@
       .about-content h3 {
         font-size: 18px;
         line-height: 1.35;
-      }
-
-      .how-card {
-        gap: 20px;
-        padding: 30px 24px 26px;
       }
 
       .hero-tag,
@@ -1866,10 +1947,64 @@
         margin-bottom: 22px;
       }
 
-      .how-card,
       .testimonial-card,
       .about-card {
         padding: 22px 18px;
+      }
+
+      #diferenciais {
+        padding: 44px 0 54px;
+      }
+
+      #diferenciais .section-title-wrap {
+        margin-bottom: 18px;
+      }
+
+      #diferenciais .section-title {
+        font-size: clamp(28px, 7.3vw, 31px);
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+
+      #diferenciais .section-subtitle {
+        font-size: 16px;
+        line-height: 1.54;
+      }
+
+      #diferenciais .how-timeline {
+        max-width: 520px;
+      }
+
+      #diferenciais .timeline-item {
+        min-height: 0;
+        padding: 0 0 20px;
+      }
+
+      #diferenciais .timeline-item + .timeline-item {
+        padding-top: 2px;
+      }
+
+      #diferenciais .timeline-marker {
+        width: 5px;
+        height: 5px;
+        box-shadow: 0 0 0 4px rgba(245, 239, 234, 0.8);
+        margin-top: 22px;
+      }
+
+      #diferenciais .timeline-number {
+        font-size: 10px;
+        margin-bottom: 6px;
+      }
+
+      #diferenciais .timeline-content h3 {
+        font-size: 19px;
+        line-height: 1.16;
+      }
+
+      #diferenciais .timeline-content p {
+        font-size: 15px;
+        line-height: 1.45;
+        margin-top: 4px;
       }
 
       .about-card {
@@ -1969,7 +2104,7 @@
 
         <a
           class="btn-primary nav-cta"
-          href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+          href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -1979,7 +2114,7 @@
 
       <a
         class="btn-primary header-cta"
-        href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+        href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -2034,11 +2169,11 @@
           <div class="hero-actions">
             <a
               class="btn-primary"
-              href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+              href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
               target="_blank"
               rel="noopener noreferrer"
             >
-              Agendar avaliação pelo WhatsApp
+              Falar sobre meu tratamento
             </a>
           </div>
 
@@ -2188,11 +2323,11 @@
             <p>“Cuidar é caminhar junto.”</p>
             <a
               class="btn-primary"
-              href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+              href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
               target="_blank"
               rel="noopener noreferrer"
             >
-              Agendar consulta pelo WhatsApp
+              Falar sobre meu tratamento
             </a>
           </div>
         </div>
@@ -2203,65 +2338,47 @@
       <div class="container">
         <div class="section-title-wrap">
           <div class="section-tag">Porque funciona</div>
-          <h2 class="section-title">O que muda com um cuidado integral</h2>
+          <h2 class="section-title">Quando existe continuidade, tudo faz mais sentido</h2>
           <p class="section-subtitle section-subtitle-emphasis">
-            No diabetes, o acompanhamento contínuo ajuda a organizar decisões, rotina e cuidado ao longo do tempo.
+            No acompanhamento do diabetes, cada decisão deve conversar com sua história, sua rotina e seus objetivos.
           </p>
         </div>
 
-        <div class="how-grid">
-          <article class="how-card card fade-in">
-            <div class="how-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M21 12a9 9 0 0 1-15.3 6.4L3 16"></path>
-                <path d="M3 21v-5h5"></path>
-                <path d="M3 12a9 9 0 0 1 15.3-6.4L21 8"></path>
-                <path d="M21 3v5h-5"></path>
-              </svg>
+        <div class="how-timeline">
+          <article class="timeline-item">
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-number">01</span>
+              <h3>Um médico que acompanha você</h3>
+              <p>Seu histórico e sua evolução não se perdem a cada consulta.</p>
             </div>
-            <h3>Continuidade no cuidado</h3>
-            <p>Seu histórico e evolução são acompanhados ao longo do tempo.</p>
           </article>
 
-          <article class="how-card card fade-in">
-            <div class="how-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="8"></circle>
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M12 2v4"></path>
-                <path d="M12 18v4"></path>
-                <path d="M2 12h4"></path>
-                <path d="M18 12h4"></path>
-              </svg>
+          <article class="timeline-item">
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-number">02</span>
+              <h3>Um cuidado que conecta tudo</h3>
+              <p>Exames, sintomas, rotina e tratamento passam a ser vistos em conjunto.</p>
             </div>
-            <h3>Mais clareza nas decisões</h3>
-            <p>O cuidado é organizado e direcionado conforme sua necessidade.</p>
           </article>
 
-          <article class="how-card card fade-in">
-            <div class="how-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M20.8 5.4a5.2 5.2 0 0 0-7.4 0L12 6.8l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21l8.8-8.2a5.2 5.2 0 0 0 0-7.4Z"></path>
-                <path d="M4 12h4l2-3 3 6 2-3h5"></path>
-              </svg>
+          <article class="timeline-item">
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-number">03</span>
+              <h3>Tudo faz mais sentido</h3>
+              <p>As decisões ficam mais claras quando o cuidado tem continuidade.</p>
             </div>
-            <h3>Visão integral da saúde</h3>
-            <p>Você é acompanhado como um todo, não apenas por sintomas isolados.</p>
           </article>
 
-          <article class="how-card card fade-in">
-            <div class="how-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M16 11a4 4 0 1 0-8 0"></path>
-                <path d="M3 21a7 7 0 0 1 18 0"></path>
-                <path d="M17 8h3"></path>
-                <path d="M18.5 6.5v3"></path>
-                <path d="M5 8H2"></path>
-                <path d="M3.5 6.5v3"></path>
-              </svg>
+          <article class="timeline-item">
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <div class="timeline-content">
+              <span class="timeline-number">04</span>
+              <h3>Menos repetição, mais continuidade</h3>
+              <p>Cada consulta continua de onde a anterior parou.</p>
             </div>
-            <h3>Coordenação entre profissionais</h3>
-            <p>Quando necessário, o cuidado continua integrado com outros especialistas.</p>
           </article>
         </div>
       </div>
@@ -2341,11 +2458,11 @@
         </p>
         <a
           class="btn-primary"
-          href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+          href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
           target="_blank"
           rel="noopener noreferrer"
         >
-          Agendar consulta pelo WhatsApp
+          Falar sobre meu tratamento
         </a>
       </div>
     </section>
@@ -2371,7 +2488,7 @@
                 <div>
                   <strong>WhatsApp</strong>
                   <a
-                    href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+                    href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -2408,14 +2525,14 @@
             </div>
 
             <div class="contact-cta-box">
-              <h3>Agende pelo WhatsApp</h3>
+              <h3>Falar sobre meu tratamento</h3>
               <p>
                 A forma mais rápida de marcar sua consulta. Clique abaixo e fale diretamente conosco.
               </p>
 
               <a
                 class="btn-primary"
-                href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+                href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -2465,10 +2582,10 @@
 
   <a
     class="floating-whatsapp"
-    href="https://wa.me/5562999235896?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+    href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Agendar consulta pelo WhatsApp"
+    aria-label="Falar sobre meu tratamento"
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M20 4A10.9 10.9 0 0 0 12.2 1 10.9 10.9 0 0 0 2.8 16.8L1 23l6.4-1.7a11 11 0 0 0 4.8 1.1h.1A10.9 10.9 0 0 0 20 4Zm-7.8 16.5a9 9 0 0 1-4.5-1.2l-.3-.2-3.8 1 1-3.7-.2-.3a9.1 9.1 0 1 1 7.8 4.4Zm5-6.8c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1a7.3 7.3 0 0 1-2.2-1.4 8.3 8.3 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.6l.4-.4c.1-.2.2-.3.3-.5.1-.1 0-.3 0-.4L9.4 7c-.1-.3-.3-.3-.5-.3h-.4c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.7 4.2.7.2 1.2.4 1.6.5.7.2 1.3.2 1.8.1.6-.1 1.6-.7 1.8-1.3.2-.7.2-1.2.2-1.3 0-.2-.2-.2-.5-.4Z"></path>
