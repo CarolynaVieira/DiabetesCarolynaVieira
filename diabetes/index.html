@@ -17,8 +17,8 @@
     name="description"
     content="Atendimento médico com escuta, continuidade e foco no cuidado integral da sua saúde."
   />
-  <link rel="canonical" href="https://diabetes.carolynavieira.com.br/" />
-  <meta property="og:url" content="https://diabetes.carolynavieira.com.br/" />
+  <link rel="canonical" href="https://carolynavieira.com.br/" />
+  <meta property="og:url" content="https://carolynavieira.com.br/" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-search-v2.png" />
   <link rel="apple-touch-icon" href="favicon-search-v2.png" />
@@ -84,6 +84,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: clip;
     }
 
     body {
@@ -91,6 +92,7 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
+      overflow-x: clip;
     }
 
     img {
@@ -415,22 +417,26 @@
 
     /* Hero */
     .hero {
+      position: relative;
       background:
         linear-gradient(180deg, var(--bg) 0%, var(--bg) 78%, var(--bg-soft) 100%);
       overflow: visible;
+      isolation: isolate;
     }
 
     .hero-inner {
-      min-height: calc(82vh - 84px);
+      position: relative;
+      z-index: 2;
+      min-height: calc(74vh - 84px);
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.82fr);
       align-items: center;
-      gap: 64px;
-      padding: 72px 0 132px;
+      gap: 34px;
+      padding: 54px 0 96px;
     }
 
     .hero-content {
-      max-width: 780px;
+      max-width: 900px;
     }
 
     .hero-tag {
@@ -454,12 +460,12 @@
     .hero h1 {
       font-family: "Playfair Display", serif;
       color: var(--text);
-      font-size: clamp(30px, 4.2vw, 50px);
-      line-height: 1.08;
+      font-size: clamp(30px, 3.7vw, 46px);
+      line-height: 1.06;
       font-weight: 500;
       letter-spacing: -0.02em;
-      max-width: 700px;
-      margin-bottom: 24px;
+      max-width: 690px;
+      margin-bottom: 20px;
     }
 
     .hero h1 .hero-tone-soft {
@@ -476,11 +482,11 @@
     }
 
     .hero p {
-      max-width: 560px;
-      font-size: clamp(17px, 1.7vw, 22px);
-      line-height: 1.55;
+      max-width: 610px;
+      font-size: clamp(17px, 1.45vw, 20px);
+      line-height: 1.48;
       color: var(--text-soft);
-      margin-bottom: 34px;
+      margin-bottom: 18px;
     }
 
     .hero-actions {
@@ -491,42 +497,132 @@
       margin-bottom: 0;
     }
 
+    .hero-actions .btn-primary {
+      min-height: 64px;
+      padding: 18px 42px;
+      font-size: 16px;
+      box-shadow: 0 16px 30px rgba(122, 90, 97, 0.18);
+    }
+
+    .hero-actions .btn-primary svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex: 0 0 auto;
+    }
+
     .hero-highlights {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px 22px;
-      max-width: 760px;
-      margin-bottom: 34px;
+      gap: 0;
+      max-width: 900px;
+      margin-bottom: 4px;
     }
 
     .highlight-item {
       min-width: 0;
       text-align: left;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      column-gap: 12px;
+      row-gap: 2px;
       justify-content: flex-start;
-      min-height: 118px;
-      padding: 18px 18px 16px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.34);
-      border: 1px solid rgba(122, 90, 97, 0.08);
+      align-items: center;
+      min-height: 68px;
+      height: 100%;
+      padding: 5px 18px 7px;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .highlight-item:not(:last-child) {
+      border-right: 1px solid rgba(122, 90, 97, 0.075);
+    }
+
+    .highlight-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      grid-row: 1 / span 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      color: var(--brand);
+      background: #fbf8f5;
+      border: 1px solid rgba(122, 90, 97, 0.10);
+      align-self: center;
+      line-height: 0;
+    }
+
+    .highlight-icon svg,
+    .highlight-icon img {
+      display: block;
+      width: 27px;
+      height: 27px;
+      margin: 0;
+      padding: 0;
+      position: static;
+      flex-shrink: 0;
+      transform: none;
+      overflow: visible;
+      vertical-align: middle;
+    }
+
+    .highlight-icon svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .highlight-icon img {
+      object-fit: contain;
+    }
+
+    .highlight-item:first-child .highlight-icon img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .highlight-item:nth-child(2) .highlight-icon img {
+      transform: translate(0, -0.5px);
+    }
+
+    .highlight-item:nth-child(3) .highlight-icon img {
+      width: 30px;
+      height: 30px;
+      transform: translate(0.25px, -0.5px);
+    }
+
+    .highlight-icon .feature-icon-large {
+      width: 23px;
+      height: 23px;
     }
 
     .highlight-item strong {
       display: block;
       font-family: "Inter", sans-serif;
       color: var(--brand);
-      font-size: 20px;
-      line-height: 1.25;
+      font-size: 14.5px;
+      line-height: 1.18;
       font-weight: 700;
-      margin-bottom: 8px;
-      min-height: 50px;
+      margin-bottom: 0;
+      min-height: 0;
+      align-self: end;
     }
 
     .highlight-item span {
       color: var(--text-soft);
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 12.8px;
+      line-height: 1.3;
+      align-self: start;
     }
 
     .hero-visual {
@@ -537,8 +633,8 @@
 
     .hero-frame {
       position: relative;
-      width: min(100%, 500px);
-      height: 640px;
+      width: min(100%, 428px);
+      height: 505px;
       border-radius: 38px;
       background: rgba(255,255,255,0.18);
       border: 1px solid rgba(230,217,184,0.65);
@@ -574,33 +670,33 @@
 
     .hero-badge {
       position: absolute;
-      right: 24px;
-      bottom: 24px;
+      right: 14px;
+      bottom: 14px;
       z-index: 3;
       width: auto;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.52);
-      border-radius: 16px;
-      box-shadow: 0 8px 18px rgba(58, 58, 58, 0.08);
+      padding: 5px 8px;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(58, 58, 58, 0.035);
       color: var(--brand);
     }
 
     .hero-badge strong {
       display: block;
       font-family: "Inter", sans-serif;
-      font-size: 15px;
+      font-size: 9.8px;
       line-height: 1.15;
       font-weight: 600;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
     .hero-badge small {
       display: block;
       color: var(--brand);
-      font-size: 11px;
+      font-size: 7.2px;
       line-height: 1.1;
       letter-spacing: 0.06em;
       opacity: 0.72;
@@ -749,41 +845,72 @@
     .timeline-content p {
       margin: 5px 0 0;
       color: var(--text-soft);
-      font-size: 15px;
+      font-size: 13px;
       line-height: 1.48;
     }
 
     /* Sobre */
     #sobre {
-      margin-top: -86px;
-      padding-top: 128px;
+      margin-top: -58px;
+      padding-top: 104px;
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 52px;
-      align-items: center;
+      grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+      gap: 48px 64px;
+      align-items: start;
+      position: relative;
+      overflow: visible;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
     }
 
     .about-mobile-heading {
       display: none;
     }
 
+    .about-mobile-intro {
+      display: none;
+    }
+
     .about-image-wrap {
       position: relative;
-      max-width: 510px;
-      margin-top: -128px;
+      grid-column: 1;
+      grid-row: 1;
+      width: min(100%, 560px);
+      height: clamp(480px, 42vw, 610px);
+      max-width: 560px;
+      min-height: 0;
+      margin: 0;
+      align-self: start;
+      justify-self: start;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #fbf8f5;
+      border: 1px solid rgba(206, 181, 124, 0.42);
+      box-shadow: 0 18px 38px rgba(72, 52, 38, 0.06);
+    }
+
+    .about-image-wrap::before {
+      display: none;
+      content: none;
     }
 
     .about-main-image {
       width: 100%;
-      height: 600px;
+      height: 100%;
+      min-height: 0;
       object-fit: cover;
-      border-radius: 30px;
+      object-position: 55% center;
+      border-radius: 0;
       position: relative;
       z-index: 2;
-      box-shadow: 0 20px 44px rgba(122, 90, 97, 0.12);
+      box-shadow: none;
+      display: block;
     }
 
     .about-main-image-mobile {
@@ -791,9 +918,7 @@
     }
 
     .about-circle {
-      position: absolute;
-      border-radius: 50%;
-      z-index: 1;
+      display: none;
     }
 
     .about-circle.top {
@@ -813,20 +938,7 @@
     }
 
     .about-badge {
-      position: absolute;
-      right: 24px;
-      bottom: 24px;
-      z-index: 3;
-      width: auto;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.52);
-      border-radius: 16px;
-      box-shadow: 0 8px 18px rgba(58, 58, 58, 0.08);
-      color: var(--brand);
-      text-align: left;
+      display: none;
     }
 
     .about-badge strong {
@@ -841,7 +953,7 @@
     .about-badge small {
       display: block;
       color: var(--brand);
-      font-size: 11px;
+      font-size: 10px;
       line-height: 1.1;
       letter-spacing: 0.06em;
       opacity: 0.72;
@@ -852,57 +964,91 @@
       color: var(--brand);
       font-weight: 700;
       line-height: 1.4;
-      max-width: 640px;
-      margin-bottom: 18px;
+      max-width: 760px;
+      margin: 0 0 18px;
     }
 
     .about-content p {
       color: var(--text-soft);
       font-size: 17px;
-      line-height: 1.68;
+      line-height: 1.6;
       margin-bottom: 14px;
-      max-width: 660px;
+      max-width: 760px;
+    }
+
+    .about-content {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      align-self: start;
+      position: relative;
+      z-index: 5;
+      max-width: 800px;
+    }
+
+    .about-intro-copy {
+      align-self: stretch;
+      position: relative;
+      z-index: 5;
+    }
+
+    .about-mobile-copy {
+      display: none;
     }
 
     .about-cards-grid {
-      margin-top: 24px;
+      width: min(100%, 800px);
+      margin: 22px 0 0;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 16px;
       align-items: stretch;
+      max-width: 800px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
     }
 
     .col-label {
       grid-column: 1 / -1;
-      color: #9b7d66;
-      letter-spacing: 0.12em;
-      font-size: 14px;
-      font-weight: 600;
-      margin: 4px 4px 2px;
+      color: var(--brand);
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0 0 10px;
       text-transform: uppercase;
     }
 
     .about-card {
-      padding: 16px 16px;
+      padding: 18px 18px;
       display: flex;
-      gap: 12px;
-      min-height: 88px;
+      gap: 14px;
+      min-height: 104px;
       height: 100%;
       align-items: flex-start;
       border-radius: 16px;
-      border: 1px solid transparent;
+      border: 1px solid rgba(230, 217, 184, 0.82);
+      background: rgba(255, 255, 255, 0.38);
+      box-shadow: 0 10px 22px rgba(72, 52, 38, 0.03);
     }
 
     .about-card.gold {
-      background: #f8f4ec;
-      border-color: #eadfc8;
+      background: rgba(255, 255, 255, 0.38);
+      border-color: rgba(230, 217, 184, 0.82);
+    }
+
+    .about-card:last-child {
+      border-bottom: 1px solid rgba(230, 217, 184, 0.82);
     }
 
     .about-card .icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.5);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #f8f2eb;
       display: grid;
       place-items: center;
       color: var(--brand);
@@ -915,7 +1061,7 @@
       height: 20px;
       stroke: currentColor;
       fill: none;
-      stroke-width: 1.9;
+      stroke-width: 1.55;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
@@ -923,9 +1069,11 @@
     .about-card strong {
       display: block;
       font-family: "Playfair Display", serif;
-      font-size: 18px;
-      line-height: 1.18;
-      margin-bottom: 3px;
+      color: var(--text);
+      font-size: 20px;
+      line-height: 1.14;
+      font-weight: 600;
+      margin-bottom: 6px;
     }
 
     .about-card span {
@@ -937,16 +1085,33 @@
     .about-footer {
       display: flex;
       align-items: center;
-      gap: 22px;
-      flex-wrap: wrap;
-      margin-top: 28px;
+      justify-content: center;
+      gap: 16px;
+      flex-direction: column;
+      width: min(100%, 520px);
+      margin: 22px 0 0;
+      max-width: 520px;
     }
 
     .about-footer p {
       font-family: "Playfair Display", serif;
       font-style: italic;
-      color: #a98d78;
+      color: var(--brand);
       margin: 0;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .about-footer::before {
+      content: "";
+      width: min(100%, 280px);
+      height: 1px;
+      background: rgba(122, 90, 97, 0.2);
+    }
+
+    .about-footer .btn-primary {
+      width: min(100%, 440px);
+      justify-content: center;
     }
 
     /* Depoimentos */
@@ -1269,8 +1434,15 @@
       background: var(--green);
       border-radius: 999px;
       box-shadow: 0 16px 34px rgba(122, 90, 97, 0.22);
-      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
       animation: whatsapp-float 3.6s ease-in-out infinite;
+    }
+
+    .floating-whatsapp.is-muted {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px) scale(0.92);
     }
 
     .floating-whatsapp::after {
@@ -1334,7 +1506,6 @@
     /* Responsive */
     @media (max-width: 1200px) {
       .hero-inner,
-      .about-grid,
       .contact-grid {
         grid-template-columns: 1fr;
       }
@@ -1343,8 +1514,17 @@
         background: var(--bg);
       }
 
+      .about-grid {
+        grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+        gap: 36px;
+        align-items: start;
+      }
+
       .about-image-wrap {
-        max-width: 540px;
+        width: min(100%, 460px);
+        height: clamp(420px, 44vw, 520px);
+        max-width: 460px;
+        justify-self: start;
       }
 
       .contact-map {
@@ -1584,12 +1764,22 @@
 
       .hero-inner {
         min-height: auto;
-        padding: 22px 0 40px;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0 20px;
+        gap: 0;
       }
 
       .hero-content {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-width: none;
+        overflow: visible;
+        order: 2;
         text-align: center;
+        position: relative;
+        z-index: 1;
       }
 
       .hero-tag {
@@ -1617,24 +1807,25 @@
       }
 
       .hero h1 {
-        max-width: 560px;
-        margin-bottom: 14px;
-        font-size: 34px;
-        line-height: 1.08;
+        max-width: 420px;
+        margin-bottom: 6px;
+        font-size: 31px;
+        line-height: 1.02;
         letter-spacing: 0;
+        text-align: center;
+        text-transform: uppercase;
       }
 
       .hero p {
-        max-width: 100%;
-        margin-bottom: 22px;
-        font-size: 17px;
-        line-height: 1.52;
+        display: none;
       }
 
       .hero-actions {
+        grid-column: 1 / -1;
+        width: 100%;
         flex-direction: column;
         align-items: stretch;
-        gap: 12px;
+        gap: 10px;
         margin-bottom: 0;
       }
 
@@ -1644,45 +1835,163 @@
       }
 
       .hero-actions .btn-primary {
-        width: min(100%, 420px);
-        min-height: 52px;
+        width: min(100%, 440px);
+        min-height: 46px;
         margin: 0 auto;
-        padding: 14px 22px;
+        padding: 11px 18px;
       }
 
       .hero-highlights {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 12px;
-        max-width: 420px;
-        margin: 0 auto 18px;
+        gap: 0;
+        width: min(100%, 440px);
+        max-width: none;
+        margin: 12px auto 12px;
+        overflow: hidden;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(122, 90, 97, 0.12);
+        box-shadow: 0 12px 30px rgba(72, 52, 38, 0.14);
       }
 
       .highlight-item {
         min-height: auto;
-        display: flex;
         width: 100%;
-        padding: 14px 16px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.46);
-        border: 1px solid rgba(122, 90, 97, 0.08);
+        grid-template-columns: 42px minmax(0, 1fr);
+        column-gap: 10px;
+        row-gap: 2px;
+        align-items: start;
+        padding: 9px 14px;
+        border-radius: 0;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid rgba(122, 90, 97, 0.2);
+        box-shadow: none;
+      }
+
+      .highlight-item:last-child {
+        border-bottom: 0;
+      }
+
+      .highlight-item:not(:last-child) {
+        border-right: 0;
+      }
+
+      .highlight-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        align-self: start;
+      }
+
+      .highlight-icon img {
+        width: 26px;
+        height: 26px;
+      }
+
+      .highlight-item:first-child .highlight-icon img {
+        width: 36px;
+        height: 36px;
+        transform: translate(2px, 2px);
+      }
+
+      .highlight-item:nth-child(2) .highlight-icon img {
+        transform: translate(7.5px, 7px);
+      }
+
+      .highlight-item:nth-child(3) .highlight-icon img {
+        width: 28.6px;
+        height: 28.6px;
+        transform: translate(6px, 6px);
+      }
+
+      .highlight-icon .feature-icon-large {
+        width: 23px;
+        height: 23px;
       }
 
       .hero-visual {
+        display: flex;
+        order: 1;
+        width: 100%;
+        margin: 0 auto 12px;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      .hero {
+        background:
+          radial-gradient(circle at 50% 10%, rgba(230, 217, 184, 0.18) 0%, rgba(230, 217, 184, 0) 44%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg) 78%, var(--bg-soft) 100%);
+      }
+
+      .hero::after {
         display: none;
       }
 
+      .hero-frame {
+        width: min(58vw, 255px);
+        height: auto;
+        aspect-ratio: 0.94;
+        border-radius: 58% 42% 50% 46% / 44% 54% 46% 56%;
+        padding: 13px;
+        background: transparent;
+        border: 2px solid rgba(176, 139, 62, 0.42);
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      .hero-frame::before,
+      .hero-frame::after,
+      .hero-dot {
+        display: none;
+      }
+
+      .hero-frame img {
+        position: static;
+        width: 92%;
+        height: 92%;
+        margin: auto;
+        border-radius: 55% 41% 48% 45% / 43% 52% 45% 55%;
+        object-fit: cover;
+        object-position: 52% 18%;
+      }
+
+      .hero-badge {
+        right: 8px;
+        bottom: 10px;
+        padding: 6px 10px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.86);
+        border-color: rgba(122, 90, 97, 0.14);
+        box-shadow: 0 8px 18px rgba(72, 52, 38, 0.12);
+      }
+
+      .hero-badge strong {
+        font-size: 11px;
+        line-height: 1.1;
+        margin-bottom: 2px;
+      }
+
+      .hero-badge small {
+        font-size: 8px;
+        letter-spacing: 0.04em;
+      }
+
       .highlight-item strong {
-        font-size: 16px;
-        line-height: 1.2;
-        margin-bottom: 4px;
+        font-size: 15.5px;
+        line-height: 1.24;
+        margin-bottom: 0;
         min-height: 0;
+        align-self: start;
       }
 
       .highlight-item span {
         display: block;
         font-size: 13px;
-        line-height: 1.35;
+        line-height: 1.36;
+        align-self: start;
       }
 
       .testimonial-card {
@@ -1703,41 +2012,144 @@
 
       #sobre {
         margin-top: 0;
-        padding-top: 48px;
+        padding-top: 28px;
       }
 
       .about-grid {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+        align-items: start;
+        max-width: 430px;
+        padding: 0 22px 18px;
+        border-radius: 0;
+        margin: 0 auto;
+        min-height: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        overflow: visible;
       }
 
       .about-mobile-heading {
-        order: 1;
-        display: block;
-        text-align: center;
-        max-width: 430px;
-        margin: 0 auto 24px;
+        display: contents;
+        margin: 0;
       }
 
       .about-mobile-heading .section-tag {
-        justify-content: center;
-        margin-bottom: 14px;
+        grid-column: 1;
+        grid-row: 1;
+        display: inline-flex;
+        justify-content: flex-start;
+        gap: 7px;
+        margin-bottom: 7px;
+        font-size: 8.8px;
+        letter-spacing: 0.14em;
+        color: var(--brand);
+      }
+
+      .about-mobile-heading .section-tag::before {
+        display: none;
+      }
+
+      .about-mobile-heading .section-tag::after {
+        display: block;
+        width: 28px;
+        height: 1px;
+        margin: 0;
+        background: rgba(122, 90, 97, 0.22);
       }
 
       .about-mobile-heading .section-title {
-        margin-bottom: 0;
-        font-size: clamp(32px, 8vw, 42px);
-        line-height: 1.12;
+        grid-column: 1;
+        grid-row: 2;
+        margin-bottom: 9px;
+        font-size: clamp(24px, 6.25vw, 28px);
+        line-height: 1.03;
+        text-align: left;
+      }
+
+      .about-mobile-intro {
+        grid-column: 1;
+        grid-row: 4;
+        display: block;
+      }
+
+      .about-mobile-intro h3 {
+        color: var(--brand);
+        font-size: 12.8px;
+        line-height: 1.27;
+        font-weight: 700;
+        margin: 0 0 7px;
+      }
+
+      .about-mobile-intro p {
+        color: var(--text-soft);
+        max-width: 96%;
+        font-size: 11.4px;
+        line-height: 1.39;
+        margin: 0 0 6px;
       }
 
       .about-image-wrap {
-        order: 2;
-        max-width: 430px;
-        margin: 0 auto 26px;
+        grid-column: 1;
+        grid-row: 3;
+        position: relative;
+        top: auto;
+        right: auto;
+        width: min(78%, 280px);
+        height: clamp(250px, 78vw, 330px);
+        max-width: 280px;
+        min-height: 0;
+        margin: 1px auto 2px;
+        border-radius: 22px 22px 24px 24px;
+        overflow: hidden;
+        background: #fbf8f5;
+        border: 1px solid rgba(206, 181, 124, 0.28);
+        box-shadow: 0 10px 22px rgba(72, 52, 38, 0.045);
+        z-index: 2;
+      }
+
+      .about-image-wrap::before {
+        display: none;
+      }
+
+      .about-main-image {
+        height: 100%;
+        min-height: 0;
+        object-fit: cover;
+        object-position: 55% 16%;
+        border-radius: inherit;
       }
 
       .about-content {
-        order: 3;
+        display: contents;
+        position: relative;
+        z-index: 6;
+      }
+
+      .about-desktop-copy {
+        display: none;
+      }
+
+      .about-mobile-copy {
+        display: none;
+      }
+
+      .about-content h3 {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.32;
+        margin: 0 auto 8px;
+        text-align: left;
+      }
+
+      .about-content p {
+        max-width: 100%;
+        font-size: 13.5px;
+        line-height: 1.5;
+        margin-bottom: 0;
+        text-align: left;
       }
 
       .about-desktop-heading {
@@ -1745,12 +2157,7 @@
       }
 
       .about-badge {
-        position: absolute;
-        right: 16px;
-        bottom: 16px;
-        margin-top: 0;
-        padding: 9px 12px;
-        border-radius: 14px;
+        display: none;
       }
 
       .about-badge strong {
@@ -1762,11 +2169,54 @@
       }
 
       .about-cards-grid {
-        gap: 12px;
+        grid-column: 1;
+        grid-row: 5;
+        width: 100%;
+        margin-top: 8px;
+        max-width: none;
+        padding: 10px 16px 8px;
+        border-radius: 17px;
+        background: rgba(255, 255, 255, 0.52);
+        border-color: rgba(230, 217, 184, 0.68);
+        box-shadow: 0 10px 22px rgba(72, 52, 38, 0.035);
+      }
+
+      .col-label {
+        margin: 0 0 7px;
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
       }
 
       .about-card {
         min-height: auto;
+        padding: 8px 0;
+        gap: 10px;
+      }
+
+      .about-card .icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .about-card .icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .about-footer {
+        grid-column: 1;
+        grid-row: 6;
+        margin-top: 14px;
+        gap: 12px;
+      }
+
+      .about-footer::before {
+        width: min(100%, 220px);
+      }
+
+      .about-footer p {
+        display: block;
+        font-size: 16px;
       }
 
       .contact-card,
@@ -1870,7 +2320,6 @@
       }
 
       .section-subtitle,
-      .about-content p,
       .timeline-content p,
       .testimonial-text,
       .contact-cta-box p {
@@ -1878,8 +2327,34 @@
       }
 
       .about-content h3 {
-        font-size: 18px;
-        line-height: 1.35;
+        max-width: 100%;
+        font-size: 14.5px;
+        line-height: 1.32;
+        margin: 0 0 8px;
+      }
+
+      .about-content p {
+        max-width: 100%;
+        font-size: 13px;
+        line-height: 1.48;
+        margin-bottom: 0;
+      }
+
+      .about-mobile-heading .section-title {
+        font-size: clamp(23px, 6.25vw, 28px);
+      }
+
+      .about-mobile-intro h3 {
+        font-size: 12.6px;
+      }
+
+      .about-mobile-intro p {
+        font-size: 11.2px;
+        line-height: 1.38;
+      }
+
+      .about-image-wrap {
+        height: clamp(240px, 68vw, 300px);
       }
 
       .hero-tag,
@@ -1893,16 +2368,13 @@
 
       .hero h1 {
         max-width: 360px;
-        margin-bottom: 12px;
-        font-size: 29px;
-        line-height: 1.08;
+        margin-bottom: 5px;
+        font-size: 26px;
+        line-height: 1.02;
       }
 
       .hero p {
-        max-width: 360px;
-        margin-bottom: 18px;
-        font-size: 16px;
-        line-height: 1.48;
+        display: none;
       }
 
       .hero-actions {
@@ -1910,9 +2382,10 @@
       }
 
       .hero-actions .btn-primary {
-        min-height: 50px;
-        padding: 13px 18px;
-        font-size: 15px;
+        min-height: 44px;
+        padding: 10px 16px;
+        font-size: 14px;
+        box-shadow: 0 12px 24px rgba(122, 90, 97, 0.14);
       }
 
       .section-subtitle-emphasis {
@@ -1920,36 +2393,63 @@
       }
 
       .hero-highlights {
-        gap: 10px;
-        margin-bottom: 16px;
+        gap: 0;
+        width: min(100%, 420px);
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hero-actions .btn-primary {
+        width: min(100%, 420px);
       }
 
       .highlight-item {
-        padding: 13px 14px;
+        min-height: 0;
+        padding: 8px 12px;
       }
 
       .highlight-item strong {
-        font-size: 15px;
+        font-size: 13px;
+        line-height: 1.16;
+      }
+
+      .highlight-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        align-self: center;
+      }
+
+      .highlight-icon .feature-icon-large {
+        width: 20px;
+        height: 20px;
+      }
+
+      .highlight-item span {
+        font-size: 11.5px;
+        line-height: 1.18;
       }
 
       .about-main-image {
-        height: 390px;
-        border-radius: 24px;
+        height: 100%;
+        border-radius: inherit;
       }
 
       #sobre {
         margin-top: 0;
-        padding-top: 40px;
+        padding-top: 30px;
       }
 
       .about-image-wrap {
         margin-top: 0;
-        margin-bottom: 22px;
       }
 
-      .testimonial-card,
-      .about-card {
+      .testimonial-card {
         padding: 22px 18px;
+      }
+
+      .about-card {
+        padding: 8px 0;
       }
 
       #diferenciais {
@@ -2008,16 +2508,18 @@
       }
 
       .about-card {
-        padding: 14px 14px;
+        padding: 8px 0;
         gap: 10px;
       }
 
       .about-card strong {
-        font-size: 17px;
+        font-size: 14.8px;
+        line-height: 1.18;
       }
 
       .about-card span {
-        font-size: 13px;
+        font-size: 12.2px;
+        line-height: 1.32;
       }
 
       .about-footer {
@@ -2128,41 +2630,49 @@
       <div class="container hero-inner">
         <div class="hero-content fade-in">
           <div class="hero-tag">ACOMPANHAMENTO EM DIABETES</div>
-
           <h1>
             <span class="hero-desktop-title">
-              Diabetes sob controle,<br />
-              <span class="hero-highlight">com qualidade de vida, cuidado contínuo e personalizado.</span>
+              Controle do diabetes
+              <span class="hero-highlight">com qualidade de vida.</span>
             </span>
             <span class="hero-mobile-title">
-              Diabetes sob controle,<br />
-              <span class="hero-highlight">com qualidade de vida, cuidado contínuo e personalizado.</span>
+              Controle do diabetes
+              <span class="hero-highlight">com qualidade de vida.</span>
             </span>
           </h1>
 
           <p>
             <span class="hero-desktop-copy">
-              Acompanhamento médico em Goiânia para trazer mais clareza, continuidade e qualidade de vida ao seu cuidado.
+              Um cuidado contínuo e personalizado para ajudar você a viver bem hoje e no futuro.
             </span>
             <span class="hero-mobile-copy">
-              Acompanhamento médico em Goiânia para trazer mais clareza, continuidade e qualidade de vida ao seu cuidado.
+              Um cuidado contínuo e personalizado para ajudar você a viver bem hoje e no futuro.
             </span>
           </p>
 
           <div class="hero-highlights">
             <div class="highlight-item">
-              <strong>Controle glicêmico</strong>
-              <span>Acompanhamento contínuo</span>
+              <span class="highlight-icon" aria-hidden="true">
+                <img src="assets/1.svg" alt="" loading="lazy" decoding="async" />
+              </span>
+              <strong>Uma médica que conhece a sua história</strong>
+              <span>O acompanhamento não recomeça. Ele evolui.</span>
             </div>
 
             <div class="highlight-item">
-              <strong>Plano individualizado</strong>
-              <span>Ajustado à sua rotina</span>
+              <span class="highlight-icon" aria-hidden="true">
+                <img src="assets/2.svg" alt="" loading="lazy" decoding="async" />
+              </span>
+              <strong>O cuidado que conecta tudo</strong>
+              <span>O tratamento começa entendendo você, não apenas a doença.</span>
             </div>
 
             <div class="highlight-item">
-              <strong>Cuidado coordenado</strong>
-              <span>Com outras especialidades</span>
+              <span class="highlight-icon" aria-hidden="true">
+                <img src="assets/3.svg" alt="" loading="lazy" decoding="async" />
+              </span>
+              <strong>Clareza no tratamento</strong>
+              <span>Rotina, sintomas e cuidado compõem as decisões.</span>
             </div>
           </div>
 
@@ -2173,7 +2683,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Falar sobre meu tratamento
+              Quero organizar meu tratamento
             </a>
           </div>
 
@@ -2215,13 +2725,23 @@
           <h2 class="section-title">
             Quem vai acompanhar você
           </h2>
+
+          <div class="about-mobile-intro">
+            <h3>Cuidado integral e acompanhamento contínuo em todas as fases da sua saúde.</h3>
+            <p>
+              Sou médica especialista no cuidado integral e contínuo dos meus pacientes, acompanhando sua saúde ao longo do tempo — não apenas em momentos isolados.
+            </p>
+            <p>
+              Meu trabalho é organizar o seu cuidado, integrar diferentes necessidades e garantir que você tenha clareza e segurança nas decisões sobre a sua saúde.
+            </p>
+          </div>
         </div>
 
         <div class="about-image-wrap about-image-reveal">
           <span class="about-circle top"></span>
 
           <picture>
-            <source media="(max-width: 768px)" srcset="assets/Carol1-mobile.jpg" />
+            <source media="(max-width: 768px)" srcset="assets/Carol3-about.jpg" />
             <img
               class="about-main-image"
               src="assets/Carol3-about.jpg"
@@ -2244,6 +2764,7 @@
         </div>
 
         <div class="about-content">
+          <div class="about-intro-copy">
           <div class="about-desktop-heading">
             <div class="section-tag" style="justify-content:flex-start; margin-bottom:18px;">Sobre a médica</div>
 
@@ -2252,15 +2773,24 @@
             </h2>
           </div>
 
-          <h3>Cuidado integral e acompanhamento contínuo em todas as fases da sua saúde</h3>
+          <h3 class="about-desktop-copy">Cuidado integral e acompanhamento contínuo em todas as fases da sua saúde</h3>
 
-          <p>
+          <div class="about-mobile-copy">
+            <h3>Cuidado contínuo e personalizado ao longo do tempo</h3>
+            <p>
+              Sou médica especialista em cuidado contínuo, com foco em organizar sua saúde, integrar diferentes necessidades e trazer mais clareza para suas decisões.
+            </p>
+          </div>
+
+          <p class="about-desktop-copy">
             Sou médica especialista no cuidado integral e contínuo dos meus pacientes, acompanhando sua saúde ao longo do tempo — não apenas em momentos isolados.
           </p>
 
-          <p>
+          <p class="about-desktop-copy">
             Meu trabalho é organizar o seu cuidado, integrar diferentes necessidades e garantir que você tenha clareza e segurança nas decisões sobre a sua saúde.
           </p>
+
+          </div>
 
           <div class="about-cards-grid">
             <div class="col-label">Formação e Experiências</div>

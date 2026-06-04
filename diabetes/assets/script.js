@@ -77,3 +77,27 @@ if (revealElements.length) {
     revealObserver.observe(element);
   });
 }
+
+const floatingWhatsapp = document.querySelector(".floating-whatsapp");
+const heroPrimaryCta = document.querySelector(".hero-actions .btn-primary");
+
+if (floatingWhatsapp && heroPrimaryCta) {
+  const toggleFloatingWhatsapp = (isHeroCtaVisible) => {
+    floatingWhatsapp.classList.toggle("is-muted", isHeroCtaVisible);
+  };
+
+  if ("IntersectionObserver" in window) {
+    const ctaObserver = new IntersectionObserver(
+      ([entry]) => {
+        toggleFloatingWhatsapp(entry.isIntersecting);
+      },
+      {
+        threshold: 0.35,
+      }
+    );
+
+    ctaObserver.observe(heroPrimaryCta);
+  } else {
+    toggleFloatingWhatsapp(true);
+  }
+}
