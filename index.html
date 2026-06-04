@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Google Tag Manager -->
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
-    new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
-    "https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,"script","dataLayer","GTM-K4J6Z74X");
-  </script>
-  <!-- End Google Tag Manager -->
+  <!-- Tracking scripts are loaded after the first render to protect mobile LCP/FCP. -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dra. Carolyna | Medicina de Família e Comunidade</title>
@@ -23,20 +15,47 @@
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-search-v2.png" />
   <link rel="apple-touch-icon" href="favicon-search-v2.png" />
   <meta name="theme-color" content="#7A5A61" />
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wphqj5gvgt");
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVDY4EGBH0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+    window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
     gtag("js", new Date());
     gtag("config", "G-SVDY4EGBH0");
+
+    (function () {
+      var thirdPartyLoaded = false;
+      var appendScript = function (src) {
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = src;
+        document.head.appendChild(script);
+      };
+      var loadThirdParty = function () {
+        if (thirdPartyLoaded) return;
+        thirdPartyLoaded = true;
+        window.dataLayer.push({"gtm.start": new Date().getTime(), event: "gtm.js"});
+        appendScript("https://www.googletagmanager.com/gtm.js?id=GTM-K4J6Z74X");
+        appendScript("https://www.googletagmanager.com/gtag/js?id=G-SVDY4EGBH0");
+        appendScript("https://www.clarity.ms/tag/wphqj5gvgt");
+      };
+      var scheduleThirdParty = function () {
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(loadThirdParty, { timeout: 2500 });
+        } else {
+          setTimeout(loadThirdParty, 1200);
+        }
+      };
+      window.addEventListener("load", scheduleThirdParty, { once: true });
+    })();
   </script>
+  <link
+    rel="preload"
+    as="image"
+    href="assets/Carol1-hero.jpg"
+    imagesrcset="assets/Carol1-mobile.jpg 720w, assets/Carol1-hero.jpg 960w"
+    imagesizes="(max-width: 768px) min(58vw, 255px), 428px"
+    fetchpriority="high"
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,8 +81,8 @@
       --support-mid: #CFC6C1;
       --text: #3A3A3A;
       --text-soft: #6E6A68;
-      --green: #A8BFA3;
-      --green-dark: #93AD8E;
+      --green: #5F7F5B;
+      --green-dark: #52724E;
       --gold: #E6D9B8;
       --rose-light: #D8B7BE;
       --white: #ffffff;
@@ -181,7 +200,7 @@
       justify-content: center;
       gap: 10px;
       border-radius: 30px;
-      transition: all 0.25s ease;
+      transition: background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, transform 0.25s ease;
       font-weight: 600;
     }
 
@@ -206,7 +225,7 @@
       color: var(--white);
       padding: 18px 32px;
       min-height: 58px;
-      box-shadow: 0 12px 26px rgba(168, 191, 163, 0.18);
+      box-shadow: 0 12px 26px rgba(95, 127, 91, 0.2);
     }
 
     .btn-primary:hover {
@@ -242,7 +261,7 @@
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.5s ease;
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .fade-in.visible {
@@ -348,7 +367,7 @@
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease, background 0.3s ease;
       position: relative;
       z-index: 61;
     }
@@ -376,23 +395,23 @@
       height: 1.5px;
       border-radius: 999px;
       background: currentColor;
-      transition: transform 0.25s ease, opacity 0.25s ease, top 0.25s ease;
+      top: 8px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     .menu-toggle .menu-open span:nth-child(1) {
-      top: 0;
+      transform: translateY(-8px);
     }
 
     .menu-toggle .menu-open span:nth-child(2) {
-      top: 8px;
+      transform: translateY(0);
     }
 
     .menu-toggle .menu-open span:nth-child(3) {
-      top: 16px;
+      transform: translateY(8px);
     }
 
     .menu-toggle.is-open .menu-open span:nth-child(1) {
-      top: 8px;
       transform: rotate(45deg);
     }
 
@@ -402,7 +421,6 @@
     }
 
     .menu-toggle.is-open .menu-open span:nth-child(3) {
-      top: 8px;
       transform: rotate(-45deg);
     }
 
@@ -829,7 +847,7 @@
       font-weight: 700;
       letter-spacing: 0.13em;
       line-height: 1;
-      opacity: 0.34;
+      opacity: 0.56;
       margin-bottom: 6px;
     }
 
@@ -888,11 +906,12 @@
       margin: 0;
       align-self: start;
       justify-self: start;
-      overflow: hidden;
-      border-radius: 24px;
-      background: #fbf8f5;
-      border: 1px solid rgba(206, 181, 124, 0.42);
-      box-shadow: 0 18px 38px rgba(72, 52, 38, 0.06);
+      overflow: visible;
+      padding: 10px;
+      border-radius: 34px;
+      background: rgba(251, 248, 245, 0.62);
+      border: 1.5px solid rgba(199, 169, 101, 0.46);
+      box-shadow: 0 18px 42px rgba(72, 52, 38, 0.045);
     }
 
     .about-image-wrap::before {
@@ -906,11 +925,23 @@
       min-height: 0;
       object-fit: cover;
       object-position: 55% center;
-      border-radius: 0;
+      border-radius: 26px;
       position: relative;
       z-index: 2;
       box-shadow: none;
       display: block;
+    }
+
+    .about-image-wrap::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      right: -7px;
+      top: 42px;
+      border-radius: 50%;
+      background: rgba(199, 169, 101, 0.22);
+      pointer-events: none;
     }
 
     .about-main-image-mobile {
@@ -1077,7 +1108,7 @@
     }
 
     .about-card span {
-      color: #8a8684;
+      color: var(--text-soft);
       font-size: 14px;
       line-height: 1.4;
     }
@@ -1308,7 +1339,7 @@
 
     .contact-item strong {
       display: block;
-      color: #a99a90;
+      color: var(--brand);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.14em;
@@ -1434,7 +1465,7 @@
       background: var(--green);
       border-radius: 999px;
       box-shadow: 0 16px 34px rgba(122, 90, 97, 0.22);
-      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
       animation: whatsapp-float 3.6s ease-in-out infinite;
     }
 
@@ -1775,7 +1806,7 @@
         grid-column: 1 / -1;
         width: 100%;
         max-width: none;
-        overflow: visible;
+        overflow: hidden;
         order: 2;
         text-align: center;
         position: relative;
@@ -2102,11 +2133,12 @@
         max-width: 280px;
         min-height: 0;
         margin: 1px auto 2px;
-        border-radius: 22px 22px 24px 24px;
-        overflow: hidden;
-        background: #fbf8f5;
-        border: 1px solid rgba(206, 181, 124, 0.28);
-        box-shadow: 0 10px 22px rgba(72, 52, 38, 0.045);
+        padding: 7px;
+        border-radius: 34px;
+        overflow: visible;
+        background: rgba(251, 248, 245, 0.58);
+        border: 1.5px solid rgba(199, 169, 101, 0.34);
+        box-shadow: 0 10px 24px rgba(72, 52, 38, 0.035);
         z-index: 2;
       }
 
@@ -2114,12 +2146,25 @@
         display: none;
       }
 
+      .about-image-wrap::after {
+        display: none;
+      }
+
+      .about-image-wrap picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 28px;
+      }
+
       .about-main-image {
         height: 100%;
         min-height: 0;
         object-fit: cover;
         object-position: 55% 16%;
-        border-radius: inherit;
+        border-radius: 28px;
+        clip-path: inset(0 round 28px);
       }
 
       .about-content {
@@ -2571,8 +2616,9 @@
           src="assets/Icone-small.png"
           alt="Logo Carolyna Vieira"
           class="logo-img"
-          width="128"
-          height="128"
+          width="42"
+          height="42"
+          decoding="async"
         />
         <span>
           <strong class="brand-name">Carolyna Vieira</strong>
@@ -2695,9 +2741,15 @@
             <span class="hero-dot bottom"></span>
 
             <picture>
-              <source media="(max-width: 768px)" srcset="assets/Carol1-mobile.jpg" />
+              <source
+                media="(max-width: 768px)"
+                srcset="assets/Carol1-mobile.jpg 720w"
+                sizes="min(58vw, 255px)"
+              />
               <img
                 src="assets/Carol1-hero.jpg"
+                srcset="assets/Carol1-mobile.jpg 720w, assets/Carol1-hero.jpg 960w"
+                sizes="(max-width: 768px) min(58vw, 255px), 428px"
                 alt="Dra. Carolyna Vieira"
                 width="960"
                 height="640"
@@ -2741,10 +2793,16 @@
           <span class="about-circle top"></span>
 
           <picture>
-            <source media="(max-width: 768px)" srcset="assets/Carol3-about.jpg" />
+            <source
+              media="(max-width: 768px)"
+              srcset="assets/Carol3-about.jpg 720w"
+              sizes="min(78vw, 280px)"
+            />
             <img
               class="about-main-image"
               src="assets/Carol3-about.jpg"
+              srcset="assets/Carol3-about.jpg 720w"
+              sizes="(max-width: 768px) min(78vw, 280px), min(100vw, 560px)"
               alt="Dra. Carolyna Vieira"
               width="720"
               height="1080"
@@ -3092,8 +3150,8 @@
           src="assets/Icone-small.png"
           alt="Logo Carolyna Vieira"
           class="footer-logo"
-          width="128"
-          height="128"
+          width="36"
+          height="36"
           loading="lazy"
           decoding="async"
         />
@@ -3122,6 +3180,6 @@
     </svg>
   </a>
 
-  <script src="assets/script.js"></script>
+  <script src="assets/script.js" defer></script>
 </body>
 </html>
