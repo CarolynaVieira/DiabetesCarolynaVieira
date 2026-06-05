@@ -152,10 +152,16 @@ if (testimonialsTrack) {
       return;
     }
 
-    const left = card.offsetLeft - testimonialsTrack.offsetLeft;
+    const trackRect = testimonialsTrack.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const centeredLeft =
+      testimonialsTrack.scrollLeft +
+      cardRect.left -
+      trackRect.left -
+      (testimonialsTrack.clientWidth - cardRect.width) / 2;
 
     testimonialsTrack.scrollTo({
-      left,
+      left: centeredLeft,
       behavior: testimonialsMobile.matches ? "smooth" : "auto",
     });
 
@@ -163,11 +169,14 @@ if (testimonialsTrack) {
   };
 
   const updateActiveTestimonial = () => {
-    const trackLeft = testimonialsTrack.scrollLeft;
+    const trackRect = testimonialsTrack.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
     const nearestIndex = testimonialCards.reduce((closestIndex, card, index) => {
-      const currentDistance = Math.abs(card.offsetLeft - testimonialsTrack.offsetLeft - trackLeft);
+      const cardRect = card.getBoundingClientRect();
+      const currentDistance = Math.abs(cardRect.left + cardRect.width / 2 - trackCenter);
       const closestCard = testimonialCards[closestIndex];
-      const closestDistance = Math.abs(closestCard.offsetLeft - testimonialsTrack.offsetLeft - trackLeft);
+      const closestRect = closestCard.getBoundingClientRect();
+      const closestDistance = Math.abs(closestRect.left + closestRect.width / 2 - trackCenter);
 
       return currentDistance < closestDistance ? index : closestIndex;
     }, 0);
