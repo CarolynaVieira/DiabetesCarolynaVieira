@@ -732,139 +732,187 @@
       transform: translateY(0) scale(1);
     }
 
-    /* Como funciona */
+    /* FAQ */
     #diferenciais {
-      padding: 52px 0 66px;
+      padding: 74px 0 82px;
     }
 
-    #diferenciais .section-title-wrap {
-      margin-bottom: 20px;
+    .faq-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+      grid-template-rows: auto 1fr;
+      gap: 26px 58px;
+      align-items: start;
     }
 
-    #diferenciais .section-title {
-      max-width: 680px;
-      margin: 0 auto 9px;
-      font-size: clamp(35px, 2.75vw, 40px);
-      line-height: 1.1;
+    .faq-copy {
+      grid-column: 1;
+      grid-row: 1;
     }
 
-    #diferenciais .section-subtitle {
-      max-width: 640px;
+    .faq-copy .section-tag {
+      justify-content: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .faq-copy .section-tag::before {
+      width: 34px;
+    }
+
+    .faq-copy .section-tag::after {
+      display: none;
+    }
+
+    .faq-copy .section-title {
+      max-width: 520px;
+      margin: 0 0 16px;
+      text-align: left;
+      font-size: clamp(36px, 3.25vw, 52px);
+      line-height: 1.08;
+    }
+
+    .faq-copy .section-subtitle {
+      max-width: 540px;
+      margin: 0 0 18px;
+      text-align: left;
       font-size: 18px;
       line-height: 1.62;
-    }
-
-    .how-timeline {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr);
-      column-gap: 6px;
-      row-gap: 42px;
-      max-width: 620px;
-      margin: 0 auto;
-      position: relative;
-      padding-bottom: 20px;
-    }
-
-    .how-timeline::before {
-      content: "";
-      position: absolute;
-      top: 16px;
-      bottom: 44px;
-      left: 50%;
-      width: 1px;
-      background: linear-gradient(
-        180deg,
-        rgba(122, 90, 97, 0),
-        rgba(122, 90, 97, 0.045) 16%,
-        rgba(122, 90, 97, 0.035) 82%,
-        rgba(122, 90, 97, 0)
-      );
-      opacity: 0.58;
-      transform: translateX(-50%);
-    }
-
-    .timeline-item {
-      display: contents;
-    }
-
-    .timeline-marker {
-      width: 5px;
-      height: 5px;
-      grid-column: 2;
-      justify-self: center;
-      align-self: start;
-      margin-top: 22px;
-      border-radius: 50%;
-      background: var(--bg-soft);
-      border: 1px solid rgba(122, 90, 97, 0.18);
-      box-shadow: 0 0 0 4px rgba(245, 239, 234, 0.78);
-      position: relative;
-      z-index: 1;
-    }
-
-    .timeline-item:nth-child(1) .timeline-marker,
-    .timeline-item:nth-child(2) .timeline-marker {
-      grid-row: 1;
-    }
-
-    .timeline-item:nth-child(3) .timeline-marker,
-    .timeline-item:nth-child(4) .timeline-marker {
-      grid-row: 2;
-    }
-
-    .timeline-content {
-      max-width: 270px;
-    }
-
-    .timeline-item:nth-child(1) .timeline-content,
-    .timeline-item:nth-child(3) .timeline-content {
-      grid-column: 1;
-      justify-self: end;
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(2) .timeline-content,
-    .timeline-item:nth-child(4) .timeline-content {
-      grid-column: 3;
-      justify-self: start;
-      text-align: left;
-    }
-
-    .timeline-item:nth-child(1) .timeline-content,
-    .timeline-item:nth-child(2) .timeline-content {
-      grid-row: 1;
-    }
-
-    .timeline-item:nth-child(3) .timeline-content,
-    .timeline-item:nth-child(4) .timeline-content {
-      grid-row: 2;
-    }
-
-    .timeline-number {
-      display: block;
-      color: var(--brand);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      line-height: 1;
-      opacity: 0.56;
-      margin-bottom: 6px;
-    }
-
-    .timeline-content h3 {
-      margin: 0;
-      font-family: "Playfair Display", serif;
-      font-size: 20px;
-      line-height: 1.13;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .timeline-content p {
-      margin: 5px 0 0;
       color: var(--text-soft);
-      font-size: 13px;
-      line-height: 1.48;
+    }
+
+    .faq-support {
+      max-width: 460px;
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .faq-cta {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: end;
+      max-width: 430px;
+      padding: 26px 26px 28px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(227, 221, 218, 0.9);
+      box-shadow: 0 14px 32px rgba(72, 52, 38, 0.045);
+    }
+
+    .faq-cta h3 {
+      margin: 0 0 8px;
+      font-family: "Playfair Display", serif;
+      color: var(--text);
+      font-size: 24px;
+      line-height: 1.16;
+      font-weight: 600;
+    }
+
+    .faq-cta p {
+      margin: 0 0 18px;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.58;
+    }
+
+    .faq-cta .btn-primary {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 20px;
+    }
+
+    .faq-list {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      display: grid;
+      gap: 9px;
+    }
+
+    .faq-item {
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(227, 221, 218, 0.92);
+      box-shadow: 0 12px 28px rgba(72, 52, 38, 0.035);
+      overflow: hidden;
+    }
+
+    .faq-item h3 {
+      margin: 0;
+    }
+
+    .faq-question {
+      width: 100%;
+      min-height: 58px;
+      padding: 15px 20px;
+      border: 0;
+      background: transparent;
+      color: var(--brand);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 34px;
+      gap: 18px;
+      align-items: center;
+      text-align: left;
+      font: inherit;
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .faq-question:focus-visible {
+      outline: 2px solid rgba(122, 90, 97, 0.48);
+      outline-offset: -5px;
+      border-radius: 16px;
+    }
+
+    .faq-toggle-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      justify-self: end;
+      background: rgba(248, 242, 235, 0.9);
+      border: 1px solid rgba(122, 90, 97, 0.12);
+      color: var(--brand);
+      line-height: 1;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .faq-toggle-icon::before {
+      content: "+";
+      font-size: 20px;
+      font-weight: 400;
+      transform: translateY(-1px);
+    }
+
+    .faq-item.is-open .faq-toggle-icon {
+      transform: rotate(180deg);
+      background: rgba(216, 183, 190, 0.14);
+    }
+
+    .faq-item.is-open .faq-toggle-icon::before {
+      content: "-";
+    }
+
+    .faq-panel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.34s ease, opacity 0.24s ease;
+    }
+
+    .faq-item.is-open .faq-panel {
+      opacity: 1;
+    }
+
+    .faq-answer {
+      margin: 0;
+      padding: 0 20px 18px;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.62;
     }
 
     /* Sobre */
@@ -1032,7 +1080,6 @@
       width: min(100%, 800px);
       margin: 22px 0 0;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px 16px;
       align-items: stretch;
       max-width: 800px;
@@ -1051,6 +1098,13 @@
       font-weight: 700;
       margin: 0 0 10px;
       text-transform: uppercase;
+    }
+
+    .about-cards-list {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 16px;
     }
 
     .about-card {
@@ -1203,6 +1257,10 @@
     .testimonial-author span {
       color: #a09a97;
       font-size: 15px;
+    }
+
+    .testimonials-carousel-controls {
+      display: none;
     }
 
     /* CTA final */
@@ -1443,6 +1501,11 @@
     .footer-right a {
       color: var(--text-soft);
       font-size: 14px;
+    }
+
+    .footer-specialty,
+    .footer-credentials {
+      display: block;
     }
 
     .footer-right {
@@ -1745,52 +1808,151 @@
       }
 
       .testimonials-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        grid-template-columns: none;
+        gap: 14px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 14px;
+        padding: 4px 14px 12px;
+        margin: 0 -14px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .testimonials-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .testimonial-card {
+        flex: 0 0 min(82vw, 380px);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+
+      .testimonial-card.fade-in {
+        opacity: 1;
+        transform: none;
+      }
+
+      .testimonials-carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 10px;
+      }
+
+      .testimonials-nav {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid rgba(122, 90, 97, 0.14);
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--brand);
+        display: grid;
+        place-items: center;
+        font: inherit;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        box-shadow: 0 10px 24px rgba(72, 52, 38, 0.06);
+      }
+
+      .testimonials-nav:disabled {
+        opacity: 0.42;
+        cursor: default;
+      }
+
+      .testimonials-nav:focus-visible {
+        outline: 2px solid rgba(122, 90, 97, 0.42);
+        outline-offset: 3px;
+      }
+
+      .testimonials-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+      }
+
+      .testimonials-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: rgba(122, 90, 97, 0.18);
+        transition: width 0.24s ease, background 0.24s ease;
+      }
+
+      .testimonials-dot.is-active {
+        width: 22px;
+        background: var(--brand);
       }
 
       #diferenciais {
         padding: 50px 0 58px;
       }
 
-      #diferenciais .section-title {
+      .faq-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 24px;
+      }
+
+      .faq-copy,
+      .faq-list,
+      .faq-cta {
+        grid-column: 1;
+        grid-row: auto;
+      }
+
+      .faq-copy {
+        position: static;
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .faq-copy .section-tag {
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+
+      .faq-copy .section-tag::after {
+        display: block;
+      }
+
+      .faq-copy .section-title {
+        max-width: 680px;
+        margin: 0 auto 12px;
+        text-align: center;
         font-size: clamp(34px, 5vw, 38px);
         line-height: 1.1;
       }
 
-      #diferenciais .section-subtitle {
+      .faq-copy .section-subtitle {
         max-width: 620px;
+        margin: 0 auto 14px;
+        text-align: center;
         font-size: 17px;
         line-height: 1.55;
       }
 
-      #diferenciais .timeline-item {
-        display: grid;
-        grid-template-columns: 28px 1fr;
-        gap: 12px;
-        min-height: 90px;
+      .faq-support {
+        display: none;
       }
 
-      #diferenciais .how-timeline {
-        display: block;
-        max-width: 620px;
+      .faq-list {
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
       }
 
-      #diferenciais .how-timeline::before {
-        left: 14px;
-        bottom: 38px;
-      }
-
-      #diferenciais .timeline-marker {
-        grid-column: 1;
-      }
-
-      #diferenciais .timeline-content,
-      #diferenciais .timeline-item:nth-child(odd) .timeline-content,
-      #diferenciais .timeline-item:nth-child(even) .timeline-content {
-        grid-column: 2;
-        justify-self: start;
-        max-width: 100%;
-        text-align: left;
+      .faq-cta {
+        max-width: 520px;
+        margin: 0 auto;
+        text-align: center;
       }
 
       .hero-inner {
@@ -2044,6 +2206,7 @@
       #sobre {
         margin-top: 0;
         padding-top: 28px;
+        padding-bottom: 30px;
       }
 
       .about-grid {
@@ -2219,33 +2382,81 @@
         width: 100%;
         margin-top: 8px;
         max-width: none;
-        padding: 10px 16px 8px;
-        border-radius: 17px;
-        background: rgba(255, 255, 255, 0.52);
-        border-color: rgba(230, 217, 184, 0.68);
-        box-shadow: 0 10px 22px rgba(72, 52, 38, 0.035);
+        gap: 8px;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
       }
 
       .col-label {
-        margin: 0 0 7px;
+        margin: 0;
         font-size: 10.5px;
         letter-spacing: 0.16em;
       }
 
+      .about-cards-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 14px 18px 10px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(122, 90, 97, 0.12);
+        box-shadow: 0 12px 30px rgba(72, 52, 38, 0.12);
+      }
+
       .about-card {
         min-height: auto;
-        padding: 8px 0;
+        height: auto;
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
         gap: 10px;
+        padding: 11px 0;
+        align-items: center;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .about-card.gold {
+        background: transparent;
+        border-color: transparent;
+      }
+
+      .about-card:not(:last-child) {
+        border-bottom: 1px solid rgba(122, 90, 97, 0.14);
+      }
+
+      .about-card:last-child {
+        border-bottom: 0;
       }
 
       .about-card .icon {
-        width: 32px;
-        height: 32px;
+        width: 42px;
+        height: 42px;
+        background: rgba(248, 242, 235, 0.88);
+        border: 1px solid rgba(122, 90, 97, 0.08);
       }
 
       .about-card .icon svg {
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .about-card strong {
+        font-family: "Inter", sans-serif;
+        color: var(--brand);
+        font-size: 15.5px;
+        line-height: 1.22;
+        margin-bottom: 2px;
+      }
+
+      .about-card span {
+        font-size: 13px;
+        line-height: 1.32;
       }
 
       .about-footer {
@@ -2280,15 +2491,31 @@
 
       .footer-inner {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        gap: 16px;
+        padding: 24px 76px 24px 0;
       }
 
       .footer-left {
-        align-items: flex-start;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-align: left;
       }
 
       .footer-right {
-        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        gap: 8px 14px;
+        text-align: center;
+        line-height: 1.45;
+      }
+
+      .footer-specialty,
+      .footer-credentials {
+        font-size: 13px;
+        line-height: 1.35;
       }
 
       .floating-whatsapp {
@@ -2365,7 +2592,7 @@
       }
 
       .section-subtitle,
-      .timeline-content p,
+      .faq-answer,
       .testimonial-text,
       .contact-cta-box p {
         font-size: 16px;
@@ -2483,6 +2710,7 @@
       #sobre {
         margin-top: 0;
         padding-top: 30px;
+        padding-bottom: 20px;
       }
 
       .about-image-wrap {
@@ -2498,58 +2726,73 @@
       }
 
       #diferenciais {
-        padding: 44px 0 54px;
+        padding: 4px 0 52px;
       }
 
-      #diferenciais .section-title-wrap {
-        margin-bottom: 18px;
+      .faq-layout {
+        gap: 18px;
       }
 
-      #diferenciais .section-title {
-        font-size: clamp(28px, 7.3vw, 31px);
+      .faq-copy .section-tag {
+        margin-bottom: 12px;
+      }
+
+      .faq-copy .section-title {
+        font-size: clamp(28px, 7.3vw, 32px);
         line-height: 1.1;
         margin-bottom: 8px;
       }
 
-      #diferenciais .section-subtitle {
+      .faq-copy .section-subtitle {
         font-size: 16px;
         line-height: 1.54;
+        margin-bottom: 12px;
       }
 
-      #diferenciais .how-timeline {
-        max-width: 520px;
+      .faq-support {
+        font-size: 14px;
+        line-height: 1.55;
       }
 
-      #diferenciais .timeline-item {
-        min-height: 0;
-        padding: 0 0 20px;
+      .faq-list {
+        gap: 10px;
       }
 
-      #diferenciais .timeline-item + .timeline-item {
-        padding-top: 2px;
+      .faq-item {
+        border-radius: 16px;
       }
 
-      #diferenciais .timeline-marker {
-        width: 5px;
-        height: 5px;
-        box-shadow: 0 0 0 4px rgba(245, 239, 234, 0.8);
-        margin-top: 22px;
-      }
-
-      #diferenciais .timeline-number {
-        font-size: 10px;
-        margin-bottom: 6px;
-      }
-
-      #diferenciais .timeline-content h3 {
-        font-size: 19px;
-        line-height: 1.16;
-      }
-
-      #diferenciais .timeline-content p {
+      .faq-question {
+        min-height: 62px;
+        padding: 16px 16px;
+        grid-template-columns: minmax(0, 1fr) 30px;
+        gap: 14px;
         font-size: 15px;
-        line-height: 1.45;
-        margin-top: 4px;
+      }
+
+      .faq-toggle-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .faq-answer {
+        padding: 0 16px 18px;
+        font-size: 14px;
+        line-height: 1.62;
+      }
+
+      .faq-cta {
+        padding: 20px 18px;
+        border-radius: 18px;
+      }
+
+      .faq-cta h3 {
+        font-size: 22px;
+      }
+
+      .faq-cta .btn-primary {
+        min-height: 52px;
+        padding: 14px 18px;
       }
 
       .about-card {
@@ -2571,7 +2814,7 @@
         flex-direction: column;
         align-items: stretch;
         gap: 14px;
-        margin-top: 22px;
+        margin-top: 16px;
       }
 
       .about-footer p {
@@ -2592,6 +2835,23 @@
       .contact-map,
       .contact-map iframe {
         min-height: 320px;
+      }
+
+      .footer-inner {
+        padding-right: 74px;
+      }
+
+      .footer-left {
+        justify-content: flex-start;
+      }
+
+      .footer-left strong {
+        font-size: 18px;
+      }
+
+      .footer-right {
+        justify-content: flex-start;
+        text-align: left;
       }
 
       .final-cta h2 {
@@ -2646,7 +2906,7 @@
       <nav class="nav" id="site-nav" aria-label="Navegação principal">
         <a href="#inicio">Início</a>
         <a href="#sobre">Sobre</a>
-        <a href="#diferenciais">Diferenciais</a>
+        <a href="#diferenciais">FAQ</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#contato">Contato</a>
 
@@ -2853,56 +3113,58 @@
           <div class="about-cards-grid">
             <div class="col-label">Formação e Experiências</div>
 
-            <div class="about-card gold">
-              <div class="icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <path d="M14 2v6h6"></path>
-                  <path d="M8 13h8"></path>
-                  <path d="M8 17h5"></path>
-                </svg>
+            <div class="about-cards-list">
+              <div class="about-card gold">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 2v6h6"></path>
+                    <path d="M8 13h8"></path>
+                    <path d="M8 17h5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Bacharel em Medicina</strong>
+                  <span>Universidade Federal de Goiás</span>
+                </div>
               </div>
-              <div>
-                <strong>Bacharel em Medicina</strong>
-                <span>Universidade Federal de Goiás</span>
-              </div>
-            </div>
 
-            <div class="about-card gold">
-              <div class="icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="8" r="5"></circle>
-                  <path d="m8.2 12.9-1.7 8.1L12 17.8l5.5 3.2-1.7-8.1"></path>
-                </svg>
+              <div class="about-card gold">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="8" r="5"></circle>
+                    <path d="m8.2 12.9-1.7 8.1L12 17.8l5.5 3.2-1.7-8.1"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Residência em MFC</strong>
+                  <span>UniEVANGÉLICA</span>
+                </div>
               </div>
-              <div>
-                <strong>Residência em MFC</strong>
-                <span>UniEVANGÉLICA</span>
-              </div>
-            </div>
 
-            <div class="about-card gold">
-              <div class="icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                </svg>
+              <div class="about-card gold">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Especialização em Endocrinologia</strong>
+                  <span>Sanar</span>
+                </div>
               </div>
-              <div>
-                <strong>Especialização em Endocrinologia</strong>
-                <span>Sanar</span>
-              </div>
-            </div>
 
-            <div class="about-card gold">
-              <div class="icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
-                  <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path>
-                </svg>
-              </div>
-              <div>
-                <strong>Docente da Clínica da Família</strong>
-                <span>UniEVANGÉLICA</span>
+              <div class="about-card gold">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 10 12 5 2 10l10 5 10-5z"></path>
+                    <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Docente da Clínica da Família</strong>
+                  <span>UniEVANGÉLICA</span>
+                </div>
               </div>
             </div>
           </div>
@@ -2924,50 +3186,144 @@
 
     <section class="section section-soft" id="diferenciais">
       <div class="container">
-        <div class="section-title-wrap">
-          <div class="section-tag">Porque funciona</div>
-          <h2 class="section-title">Quando existe continuidade, tudo faz mais sentido</h2>
-          <p class="section-subtitle section-subtitle-emphasis">
-            No acompanhamento do diabetes, cada decisão deve conversar com sua história, sua rotina e seus objetivos.
-          </p>
-        </div>
+        <div class="faq-layout">
+          <div class="faq-copy">
+            <div class="section-tag">FAQ</div>
+            <h2 class="section-title">Perguntas comuns antes de começar o cuidado</h2>
+            <p class="section-subtitle section-subtitle-emphasis">
+              Respostas objetivas sobre acompanhamento, prevenção, diabetes, emagrecimento e funcionamento da consulta.
+            </p>
+            <p class="faq-support">
+              Um espaço para esclarecer dúvidas importantes e entender melhor como funciona a proposta de cuidado.
+            </p>
+          </div>
 
-        <div class="how-timeline">
-          <article class="timeline-item">
-            <span class="timeline-marker" aria-hidden="true"></span>
-            <div class="timeline-content">
-              <span class="timeline-number">01</span>
-              <h3>Um médico que acompanha você</h3>
-              <p>Seu histórico e sua evolução não se perdem a cada consulta.</p>
-            </div>
-          </article>
+          <div class="faq-list" data-faq-accordion>
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1">
+                  <span>O que significa cuidado integral na prática?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" aria-hidden="true">
+                <p class="faq-answer">
+                  Significa olhar para a pessoa. Não para uma doença ou um exame alterado. Às vezes a glicose piora porque o sono está ruim, a alimentação está desorganizada, o peso aumentou, o paciente está estressado, usando muitos remédios ou sem conseguir seguir um plano que faça sentido para sua rotina. Cuidado integral é juntar essas peças e propor um tratamento possível, seguro e individualizado.
+                </p>
+              </div>
+            </article>
 
-          <article class="timeline-item">
-            <span class="timeline-marker" aria-hidden="true"></span>
-            <div class="timeline-content">
-              <span class="timeline-number">02</span>
-              <h3>Um cuidado que conecta tudo</h3>
-              <p>Exames, sintomas, rotina e tratamento passam a ser vistos em conjunto.</p>
-            </div>
-          </article>
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2">
+                  <span>A Dra. também acompanha outros problemas de saúde?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" aria-hidden="true">
+                <p class="faq-answer">
+                  Sim. Muitas condições caminham juntas, como diabetes, hipertensão, colesterol alto, obesidade, alterações da tireoide, resistência à insulina, dor crônica, sono ruim e uso de muitos medicamentos. Sempre que for seguro e adequado, é possível conduzir o cuidado com uma médica só, evitando encaminhamentos desnecessários e mantendo um plano mais integrado, individualizado e fácil de acompanhar.
+                </p>
+              </div>
+            </article>
 
-          <article class="timeline-item">
-            <span class="timeline-marker" aria-hidden="true"></span>
-            <div class="timeline-content">
-              <span class="timeline-number">03</span>
-              <h3>Tudo faz mais sentido</h3>
-              <p>As decisões ficam mais claras quando o cuidado tem continuidade.</p>
-            </div>
-          </article>
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3">
+                  <span>Tem como prevenir diabetes?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" aria-hidden="true">
+                <p class="faq-answer">
+                  Sim, principalmente o diabetes tipo 2. A prevenção começa identificando fatores de risco, como pré-diabetes, ganho de peso, sedentarismo, histórico familiar, hipertensão, colesterol alto e esteatose hepática. Com acompanhamento adequado, alimentação possível de manter, atividade física, melhora do sono e perda de peso quando indicada, é possível reduzir muito o risco de desenvolver diabetes no futuro.
+                </p>
+              </div>
+            </article>
 
-          <article class="timeline-item">
-            <span class="timeline-marker" aria-hidden="true"></span>
-            <div class="timeline-content">
-              <span class="timeline-number">04</span>
-              <h3>Menos repetição, mais continuidade</h3>
-              <p>Cada consulta continua de onde a anterior parou.</p>
-            </div>
-          </article>
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4">
+                  <span>O pré-diabetes tem cura?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" aria-hidden="true">
+                <p class="faq-answer">
+                  O pré-diabetes pode regredir, e muitas pessoas conseguem voltar a glicose para a faixa normal. Mas isso não significa que o risco desapareceu para sempre. Ele é um sinal de alerta do metabolismo e precisa ser acompanhado. Com perda de peso, alimentação adequada, atividade física, sono melhor e cuidado dos outros fatores de risco, é possível reduzir muito a chance de evolução para diabetes tipo 2 e a necessidade futura de medicação contínua.
+                </p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-5" aria-expanded="false" aria-controls="faq-answer-5">
+                  <span>Por que é mais difícil controlar o diabetes no idoso?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-5" role="region" aria-labelledby="faq-question-5" aria-hidden="true">
+                <p class="faq-answer">
+                  Porque o tratamento precisa respeitar a vida real do idoso: seus hábitos, preferências, autonomia, memória, outras doenças e medicamentos em uso. Muitas vezes não basta orientar; é preciso negociar, adaptar e encontrar um plano possível. O objetivo não é apenas baixar a glicose, mas controlar o diabetes com segurança, evitando hipoglicemia e preservando qualidade de vida.
+                </p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-6" aria-expanded="false" aria-controls="faq-answer-6">
+                  <span>A Dra. atende pacientes que querem emagrecer?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" aria-hidden="true">
+                <p class="faq-answer">
+                  Sim. O emagrecimento é abordado como parte do cuidado metabólico e da saúde como um todo, especialmente quando há resistência à insulina, pré-diabetes, diabetes, hipertensão, colesterol alto, esteatose hepática, dores articulares ou impacto na qualidade de vida. O foco não é apenas perder peso, mas melhorar saúde, disposição, funcionalidade e reduzir riscos futuros, com um plano individualizado e possível de manter.
+                </p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-7" aria-expanded="false" aria-controls="faq-answer-7">
+                  <span>Medicamentos como Ozempic, Wegovy ou Mounjaro podem ser prescritos?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-7" role="region" aria-labelledby="faq-question-7" aria-hidden="true">
+                <p class="faq-answer">
+                  Podem ser considerados quando há indicação clínica. A decisão depende do diagnóstico, histórico de saúde, exames, contraindicações, objetivos do tratamento, segurança e possibilidade de acompanhamento. Esses medicamentos não substituem uma avaliação completa e não devem ser usados como solução isolada. Quando indicados, fazem parte de um plano mais amplo, que também considera alimentação, atividade física, sono, rotina e saúde metabólica.
+                </p>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <h3>
+                <button class="faq-question" type="button" id="faq-question-8" aria-expanded="false" aria-controls="faq-answer-8">
+                  <span>Atende plano de saúde?</span>
+                  <span class="faq-toggle-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id="faq-answer-8" role="region" aria-labelledby="faq-question-8" aria-hidden="true">
+                <p class="faq-answer">
+                  Para garantir um acompanhamento de excelência, próximo e dedicado, os atendimentos médicos são exclusivamente particulares. Os exames solicitados durante a consulta podem ser realizados pelo convênio, conforme a cobertura do seu plano de saúde. Também facilitamos o processo para solicitação de reembolso, emitindo toda a documentação necessária, como nota fiscal e recibo. A aprovação e o valor do reembolso dependem das regras de cada operadora.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="faq-cta">
+            <h3>Ainda tem dúvidas sobre o acompanhamento?</h3>
+            <p>Fale pelo WhatsApp e veja se a consulta faz sentido para o seu caso.</p>
+            <a
+              class="btn-primary"
+              href="https://wa.me/5562999235896?text=Ol%C3%A1!%20Vi%20o%20an%C3%BAncio%20e%20gostaria%20de%20entender%20melhor%20como%20funciona%20o%20acompanhamento."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Tirar dúvidas pelo WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -2979,7 +3335,7 @@
           <h2 class="section-title">O que dizem os pacientes</h2>
         </div>
 
-        <div class="testimonials-grid">
+        <div class="testimonials-grid" data-testimonials-carousel aria-label="Avaliações dos pacientes">
           <article class="testimonial-card card fade-in">
             <div>
               <div class="stars">★★★★★</div>
@@ -3030,6 +3386,20 @@
               </div>
             </div>
           </article>
+        </div>
+
+        <div class="testimonials-carousel-controls" aria-label="Navegar pelos depoimentos">
+          <button class="testimonials-nav testimonials-prev" type="button" aria-label="Depoimento anterior">
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+          <div class="testimonials-dots" aria-hidden="true">
+            <span class="testimonials-dot is-active"></span>
+            <span class="testimonials-dot"></span>
+            <span class="testimonials-dot"></span>
+          </div>
+          <button class="testimonials-nav testimonials-next" type="button" aria-label="Próximo depoimento">
+            <span aria-hidden="true">&#8250;</span>
+          </button>
         </div>
       </div>
     </section>
@@ -3157,7 +3527,8 @@
         />
         <div>
           <strong>Carolyna Vieira</strong>
-          <span>Médica Especialista</span>
+          <span class="footer-specialty">Médica Especialista</span>
+          <span class="footer-credentials">CRM-GO 25493 · RQE 19119</span>
         </div>
       </div>
 
