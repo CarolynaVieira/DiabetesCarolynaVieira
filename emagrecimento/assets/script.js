@@ -54,7 +54,6 @@ if (menuToggle && siteNav && menuOverlay) {
 }
 
 const faqItems = document.querySelectorAll(".faq-item");
-const faqDesktop = window.matchMedia("(min-width: 769px)");
 
 if (faqItems.length) {
   const setFaqOpen = (item, isOpen) => {
@@ -81,10 +80,6 @@ if (faqItems.length) {
 
   const setupFaqInitialState = () => {
     faqItems.forEach((item) => setFaqOpen(item, false));
-
-    if (faqDesktop.matches) {
-      setFaqOpen(faqItems[0], true);
-    }
   };
 
   faqItems.forEach((item) => {
@@ -102,12 +97,6 @@ if (faqItems.length) {
   });
 
   setupFaqInitialState();
-
-  if (typeof faqDesktop.addEventListener === "function") {
-    faqDesktop.addEventListener("change", setupFaqInitialState);
-  } else if (typeof faqDesktop.addListener === "function") {
-    faqDesktop.addListener(setupFaqInitialState);
-  }
 
   window.addEventListener("resize", () => {
     faqItems.forEach((item) => {
