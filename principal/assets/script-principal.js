@@ -53,6 +53,61 @@ if (menuToggle && siteNav && menuOverlay) {
   });
 }
 
+const conditionItems = document.querySelectorAll(".condition-item");
+
+if (conditionItems.length) {
+  const setConditionOpen = (item, isOpen) => {
+    const button = item.querySelector(".condition-trigger");
+    const panel = item.querySelector(".condition-panel");
+    const toggle = item.querySelector(".condition-toggle");
+
+    if (!button || !panel) {
+      return;
+    }
+
+    item.classList.toggle("is-open", isOpen);
+    button.setAttribute("aria-expanded", String(isOpen));
+    panel.setAttribute("aria-hidden", String(!isOpen));
+    panel.style.maxHeight = isOpen ? `${panel.scrollHeight}px` : "0px";
+
+    if (toggle) {
+      toggle.textContent = isOpen ? "–" : "+";
+    }
+  };
+
+  const closeConditionItems = (activeItem) => {
+    conditionItems.forEach((item) => {
+      if (item !== activeItem) {
+        setConditionOpen(item, false);
+      }
+    });
+  };
+
+  conditionItems.forEach((item) => {
+    const button = item.querySelector(".condition-trigger");
+
+    if (!button) {
+      return;
+    }
+
+    setConditionOpen(item, false);
+
+    button.addEventListener("click", () => {
+      const shouldOpen = !item.classList.contains("is-open");
+      closeConditionItems(item);
+      setConditionOpen(item, shouldOpen);
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    conditionItems.forEach((item) => {
+      if (item.classList.contains("is-open")) {
+        setConditionOpen(item, true);
+      }
+    });
+  });
+}
+
 const faqItems = document.querySelectorAll(".faq-item");
 
 if (faqItems.length) {
