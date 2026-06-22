@@ -17,7 +17,13 @@ emagrecimento/
 
 O site principal deve ser editado em `principal/`. O workflow publica o conteudo dessa pasta diretamente em `public_html/`, que e a raiz publica do dominio `carolynavieira.com.br`.
 
-Os arquivos `index.html` e `assets/` na raiz podem existir como espelho local/compatibilidade, mas nao sao a fonte oficial de edicao do site principal.
+Os arquivos `index.html` e `assets/` na raiz existem como espelho local/compatibilidade, mas nao sao a fonte oficial de edicao do site principal. Depois de alterar `principal/`, sincronize a raiz com:
+
+```powershell
+.\scripts\sync-principal.ps1 -Check
+```
+
+Regra pratica: edite `principal/`, sincronize a raiz, publique. Nao use `public_html/principal/` para o dominio principal.
 
 ## Deploy
 
