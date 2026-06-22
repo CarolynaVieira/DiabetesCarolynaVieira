@@ -48,7 +48,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./diabetes/
-          server-dir: ./diabetes/
+          server-dir: ./public_html/diabetes/
           exclude: |
             **/.git*
             **/.git*/**
@@ -71,7 +71,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./checkup/
-          server-dir: ./checkup/
+          server-dir: ./public_html/checkup/
           exclude: |
             **/.git*
             **/.git*/**
@@ -94,7 +94,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./emagrecimento/
-          server-dir: ./emagrecimento/
+          server-dir: ./public_html/emagrecimento/
           exclude: |
             **/.git*
             **/.git*/**
@@ -117,7 +117,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./prevencao/
-          server-dir: ./prevencao/
+          server-dir: ./public_html/prevencao/
           exclude: |
             **/.git*
             **/.git*/**
