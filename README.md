@@ -10,11 +10,14 @@ assets/
 principal/
 diabetes/
 checkup/
+prevencao/
 emagrecimento/
 .github/workflows/
 ```
 
-Os arquivos `index.html` e `assets/` na raiz espelham o site de `principal/` para compatibilidade com o deploy Git da Hostinger, que publica a raiz do repositorio diretamente em `public_html/`.
+O site principal deve ser editado em `principal/`. O workflow publica o conteudo dessa pasta diretamente em `public_html/`, que e a raiz publica do dominio `carolynavieira.com.br`.
+
+Os arquivos `index.html` e `assets/` na raiz podem existir como espelho local/compatibilidade, mas nao sao a fonte oficial de edicao do site principal.
 
 ## Deploy
 
@@ -34,6 +37,7 @@ Destinos no FTP da Hostinger:
 principal/      -> public_html/
 diabetes/       -> public_html/diabetes/
 checkup/        -> public_html/checkup/
+prevencao/      -> public_html/prevencao/
 emagrecimento/  -> public_html/emagrecimento/
 ```
 

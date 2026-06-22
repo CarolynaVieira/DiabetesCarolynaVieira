@@ -474,7 +474,7 @@
       font-weight: 500;
       letter-spacing: -0.02em;
       max-width: 690px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .hero h1 .hero-tone-soft {
@@ -482,6 +482,7 @@
     }
 
     .hero-highlight {
+      display: block;
       color: var(--rose-light);
     }
 
@@ -725,92 +726,167 @@
 
     /* Condições acompanhadas */
     .conditions-section {
-      padding: 82px 0 88px;
+      padding: 72px 0 78px;
       background: var(--bg-soft);
     }
 
     .conditions-header {
       max-width: 840px;
-      margin: 0 auto 38px;
+      margin: 0 auto 34px;
       text-align: center;
     }
 
     .conditions-header .section-title {
       max-width: 760px;
       margin: 0 auto 16px;
-      font-size: clamp(36px, 3.6vw, 52px);
+      font-size: clamp(36px, 3.4vw, 48px);
       line-height: 1.08;
     }
 
     .conditions-header .section-subtitle {
-      max-width: 760px;
+      max-width: 820px;
       font-size: 18px;
       line-height: 1.62;
     }
 
-    .conditions-grid {
+    .conditions-accordion {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 1040px;
+      margin: 0 auto;
     }
 
-    .condition-card {
+    .condition-item {
       position: relative;
-      min-height: 224px;
-      padding: 26px 26px 28px;
-      border-radius: 20px;
+      border-radius: 18px;
       background: rgba(255, 255, 255, 0.56);
-      border: 1px solid rgba(230, 217, 184, 0.78);
-      box-shadow: 0 14px 30px rgba(72, 52, 38, 0.04);
+      border: 1px solid rgba(227, 221, 218, 0.9);
+      box-shadow: 0 12px 26px rgba(72, 52, 38, 0.035);
       overflow: hidden;
+      transition: border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
     }
 
-    .condition-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 26px;
-      width: 42px;
-      height: 2px;
-      background: rgba(122, 90, 97, 0.46);
+    .condition-item.is-open {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(122, 90, 97, 0.18);
+      box-shadow: 0 16px 34px rgba(72, 52, 38, 0.055);
     }
 
-    .condition-number {
-      display: block;
-      margin-bottom: 18px;
+    .condition-trigger {
+      width: 100%;
+      min-height: 78px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 28px;
+      gap: 14px;
+      align-items: center;
       color: var(--brand);
-      font-size: 12px;
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      text-align: left;
     }
 
-    .condition-card h3 {
-      margin: 0 0 10px;
+    .condition-icon {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(216, 183, 190, 0.18);
+      color: var(--brand);
+      border: 1px solid rgba(122, 90, 97, 0.08);
+    }
+
+    .condition-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .condition-title {
       font-family: "Playfair Display", serif;
-      color: var(--text);
-      font-size: 23px;
+      color: var(--brand);
+      font-size: 21px;
       line-height: 1.18;
       font-weight: 600;
     }
 
-    .condition-card p {
+    .condition-toggle {
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      justify-self: end;
+      border-radius: 50%;
+      color: var(--brand);
+      background: rgba(248, 242, 235, 0.85);
+      border: 1px solid rgba(122, 90, 97, 0.12);
+      font-size: 19px;
+      line-height: 1;
+      transition: transform 0.24s ease, background 0.24s ease;
+    }
+
+    .condition-item.is-open .condition-toggle {
+      transform: rotate(180deg);
+      background: rgba(216, 183, 190, 0.16);
+    }
+
+    .condition-panel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.32s ease, opacity 0.22s ease;
+    }
+
+    .condition-item.is-open .condition-panel {
+      opacity: 1;
+    }
+
+    .condition-content {
+      padding: 0 18px 18px 76px;
+    }
+
+    .condition-content p {
       margin: 0;
       color: var(--text-soft);
       font-size: 15px;
-      line-height: 1.58;
+      line-height: 1.6;
+    }
+
+    .condition-link {
+      display: inline-flex;
+      margin-top: 13px;
+      color: var(--brand);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .condition-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .condition-trigger:focus-visible,
+    .condition-link:focus-visible {
+      outline: 2px solid rgba(122, 90, 97, 0.42);
+      outline-offset: 3px;
+      border-radius: 14px;
     }
 
     /* FAQ */
     #faq {
-      padding: 74px 0 82px;
+      padding: 42px 0 48px;
     }
 
     .faq-layout {
       display: grid;
       grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
       grid-template-rows: auto 1fr;
-      gap: 26px 58px;
+      gap: 20px 44px;
       align-items: start;
     }
 
@@ -821,7 +897,7 @@
 
     .faq-copy .section-tag {
       justify-content: flex-start;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
     }
 
     .faq-copy .section-tag::before {
@@ -833,69 +909,70 @@
     }
 
     .faq-copy .section-title {
-      max-width: 520px;
-      margin: 0 0 16px;
+      max-width: 500px;
+      margin: 0 0 12px;
       text-align: left;
-      font-size: clamp(36px, 3.25vw, 52px);
-      line-height: 1.08;
+      font-size: clamp(34px, 2.8vw, 44px);
+      line-height: 1.06;
     }
 
     .faq-copy .section-subtitle {
-      max-width: 540px;
-      margin: 0 0 18px;
+      max-width: 500px;
+      margin: 0 0 12px;
       text-align: left;
-      font-size: 18px;
-      line-height: 1.62;
+      font-size: 16px;
+      line-height: 1.52;
       color: var(--text-soft);
     }
 
     .faq-support {
-      max-width: 460px;
+      max-width: 440px;
       margin: 0;
       color: var(--text-soft);
-      font-size: 16px;
-      line-height: 1.68;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     .faq-cta {
       grid-column: 1;
       grid-row: 2;
       align-self: end;
-      max-width: 430px;
-      padding: 26px 26px 28px;
-      border-radius: 20px;
+      width: 100%;
+      max-width: 440px;
+      padding: 20px 22px 22px;
+      border-radius: 18px;
       background: rgba(255, 255, 255, 0.42);
       border: 1px solid rgba(227, 221, 218, 0.9);
       box-shadow: 0 14px 32px rgba(72, 52, 38, 0.045);
     }
 
     .faq-cta h3 {
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       font-family: "Playfair Display", serif;
-      color: var(--text);
-      font-size: 24px;
-      line-height: 1.16;
+      color: var(--brand);
+      font-size: 21px;
+      line-height: 1.18;
       font-weight: 600;
     }
 
     .faq-cta p {
-      margin: 0 0 18px;
+      margin: 0 0 14px;
       color: var(--text-soft);
-      font-size: 15px;
-      line-height: 1.58;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .faq-cta .btn-primary {
       width: 100%;
-      min-height: 54px;
-      padding: 14px 20px;
+      min-height: 48px;
+      padding: 12px 18px;
     }
 
     .faq-list {
       grid-column: 2;
       grid-row: 1 / span 2;
       display: grid;
-      gap: 9px;
+      gap: 7px;
     }
 
     .faq-item {
@@ -912,20 +989,20 @@
 
     .faq-question {
       width: 100%;
-      min-height: 58px;
-      padding: 15px 20px;
+      min-height: 52px;
+      padding: 10px 18px;
       border: 0;
       background: transparent;
       color: var(--brand);
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 34px;
-      gap: 18px;
+      grid-template-columns: minmax(0, 1fr) 30px;
+      gap: 14px;
       align-items: center;
       text-align: left;
       font: inherit;
-      font-size: 16px;
-      line-height: 1.35;
-      font-weight: 600;
+      font-size: 14.5px;
+      line-height: 1.24;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -935,9 +1012,13 @@
       border-radius: 16px;
     }
 
+    .faq-question span:first-child {
+      color: var(--brand);
+    }
+
     .faq-toggle-icon {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       display: inline-grid;
       place-items: center;
@@ -951,7 +1032,7 @@
 
     .faq-toggle-icon::before {
       content: "+";
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
       transform: translateY(-1px);
     }
@@ -978,10 +1059,10 @@
 
     .faq-answer {
       margin: 0;
-      padding: 0 20px 18px;
+      padding: 2px 18px 15px;
       color: var(--text-soft);
-      font-size: 15px;
-      line-height: 1.62;
+      font-size: 14px;
+      line-height: 1.55;
     }
 
     /* Sobre */
@@ -2149,7 +2230,7 @@
         grid-template-columns: 1fr;
         display: flex;
         flex-direction: column;
-        padding: 10px 0 20px;
+        padding: 9px 0 19px;
         gap: 0;
       }
 
@@ -2190,9 +2271,9 @@
 
       .hero h1 {
         max-width: 420px;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
         font-size: 31px;
-        line-height: 1.02;
+        line-height: 0.98;
         letter-spacing: 0;
         text-align: center;
         text-transform: uppercase;
@@ -2218,9 +2299,9 @@
 
       .hero-actions .btn-primary {
         width: min(100%, 440px);
-        min-height: 46px;
+        min-height: 44px;
         margin: 0 auto;
-        padding: 11px 18px;
+        padding: 10px 18px;
       }
 
       .hero-highlights {
@@ -2229,7 +2310,7 @@
         gap: 0;
         width: min(100%, 440px);
         max-width: none;
-        margin: 12px auto 12px;
+        margin: 11px auto 11px;
         overflow: hidden;
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.68);
@@ -2240,11 +2321,11 @@
       .highlight-item {
         min-height: auto;
         width: 100%;
-        grid-template-columns: 42px minmax(0, 1fr);
+        grid-template-columns: 40px minmax(0, 1fr);
         column-gap: 10px;
-        row-gap: 2px;
+        row-gap: 1px;
         align-items: start;
-        padding: 9px 14px;
+        padding: 8.5px 14px;
         border-radius: 0;
         background: transparent;
         border: 0;
@@ -2261,15 +2342,15 @@
       }
 
       .highlight-icon {
-        width: 42px;
-        height: 42px;
-        min-width: 42px;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
         align-self: start;
       }
 
       .highlight-icon img {
-        width: 26px;
-        height: 26px;
+        width: 25px;
+        height: 25px;
       }
 
       .highlight-item:first-child .highlight-icon img {
@@ -2297,7 +2378,7 @@
         display: flex;
         order: 1;
         width: 100%;
-        margin: 0 auto 12px;
+        margin: 0 auto 11px;
         justify-content: center;
         z-index: 1;
       }
@@ -2313,11 +2394,11 @@
       }
 
       .hero-frame {
-        width: min(58vw, 255px);
+        width: min(57vw, 250px);
         height: auto;
         aspect-ratio: 0.94;
         border-radius: 58% 42% 50% 46% / 44% 54% 46% 56%;
-        padding: 13px;
+        padding: 11px;
         background: transparent;
         border: 2px solid rgba(176, 139, 62, 0.42);
         box-shadow: none;
@@ -2362,8 +2443,8 @@
       }
 
       .highlight-item strong {
-        font-size: 15.5px;
-        line-height: 1.24;
+        font-size: 15.2px;
+        line-height: 1.2;
         margin-bottom: 0;
         min-height: 0;
         align-self: start;
@@ -2371,8 +2452,8 @@
 
       .highlight-item span {
         display: block;
-        font-size: 13px;
-        line-height: 1.36;
+        font-size: 12.9px;
+        line-height: 1.28;
         align-self: start;
       }
 
@@ -2829,9 +2910,9 @@
 
       .hero h1 {
         max-width: 360px;
-        margin-bottom: 5px;
-        font-size: 26px;
-        line-height: 1.02;
+        margin-bottom: 3px;
+        font-size: 24px;
+        line-height: 0.98;
       }
 
       .hero p {
@@ -2843,8 +2924,8 @@
       }
 
       .hero-actions .btn-primary {
-        min-height: 44px;
-        padding: 10px 16px;
+        min-height: 42px;
+        padding: 9px 16px;
         font-size: 14px;
         box-shadow: 0 12px 24px rgba(122, 90, 97, 0.14);
       }
@@ -2856,8 +2937,8 @@
       .hero-highlights {
         gap: 0;
         width: min(100%, 420px);
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 9px;
+        margin-bottom: 9px;
       }
 
       .hero-actions .btn-primary {
@@ -2866,11 +2947,11 @@
 
       .highlight-item {
         min-height: 0;
-        padding: 8px 12px;
+        padding: 7.5px 12px;
       }
 
       .highlight-item strong {
-        font-size: 13px;
+        font-size: 12.8px;
         line-height: 1.16;
       }
 
@@ -2887,7 +2968,7 @@
       }
 
       .highlight-item span {
-        font-size: 11.5px;
+        font-size: 11.4px;
         line-height: 1.18;
       }
 
@@ -2956,7 +3037,8 @@
         padding: 16px 16px;
         grid-template-columns: minmax(0, 1fr) 30px;
         gap: 14px;
-        font-size: 15px;
+        font-size: 13px;
+        line-height: 1.22;
       }
 
       .faq-toggle-icon {
@@ -3053,8 +3135,9 @@
     }
 
     @media (max-width: 980px) {
-      .conditions-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .conditions-accordion {
+        grid-template-columns: 1fr;
+        max-width: 760px;
       }
     }
 
@@ -3073,13 +3156,13 @@
       }
 
       .hero h1 {
-        max-width: 310px;
-        font-size: 26px;
+        max-width: 360px;
+        font-size: clamp(19px, 5.25vw, 22px);
         overflow-wrap: break-word;
       }
 
       .hero p {
-        display: block;
+        display: none;
         max-width: 300px;
         margin-bottom: 8px;
         font-size: 14px;
@@ -3092,47 +3175,54 @@
       }
 
       .conditions-section {
-        padding: 52px 0 58px;
+        padding: 46px 0 52px;
       }
 
       .conditions-header {
-        margin-bottom: 26px;
+        margin-bottom: 22px;
       }
 
       .conditions-header .section-title {
         font-size: 32px;
+        margin-bottom: 10px;
       }
 
       .conditions-header .section-subtitle {
         font-size: 16px;
-        line-height: 1.55;
+        line-height: 1.5;
       }
 
-      .conditions-grid {
-        grid-template-columns: 1fr;
+      .conditions-accordion {
+        gap: 10px;
+      }
+
+      .condition-trigger {
+        min-height: 68px;
+        padding: 13px 14px;
+        grid-template-columns: 38px minmax(0, 1fr) 28px;
         gap: 12px;
       }
 
-      .condition-card {
-        min-height: 0;
-        padding: 21px 20px 22px;
-        border-radius: 18px;
+      .condition-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 13px;
       }
 
-      .condition-card::after {
-        left: 20px;
-        width: 34px;
+      .condition-icon svg {
+        width: 20px;
+        height: 20px;
       }
 
-      .condition-number {
-        margin-bottom: 12px;
+      .condition-title {
+        font-size: 19px;
       }
 
-      .condition-card h3 {
-        font-size: 21px;
+      .condition-content {
+        padding: 0 14px 16px 64px;
       }
 
-      .condition-card p {
+      .condition-content p {
         font-size: 14.5px;
         line-height: 1.52;
       }
@@ -3214,12 +3304,12 @@
           <div class="hero-tag">ACOMPANHAMENTO MÉDICO INTEGRAL</div>
           <h1>
             <span class="hero-desktop-title">
-              Cuidado médico para organizar sua saúde metabólica com
-              <span class="hero-highlight">segurança e continuidade.</span>
+              Saúde hormonal e metabólica
+              <span class="hero-highlight">com mais clareza.</span>
             </span>
             <span class="hero-mobile-title">
-              Cuidado médico para sua
-              <span class="hero-highlight">saúde metabólica.</span>
+              Saúde hormonal e metabólica
+              <span class="hero-highlight">com mais clareza.</span>
             </span>
           </h1>
 
@@ -3477,59 +3567,155 @@
       <div class="container">
         <div class="conditions-header">
           <div class="section-tag">Condições acompanhadas</div>
-          <h2 class="section-title">Principais condições que podem ser acompanhadas</h2>
+          <h2 class="section-title">Principais condições acompanhadas</h2>
           <p class="section-subtitle">
-            Um cuidado integrado para condições metabólicas e crônicas que frequentemente se relacionam entre si e exigem acompanhamento contínuo.
+            O cuidado pode envolver diferentes queixas, exames e fases da saúde. A avaliação é feita de forma integrada, considerando sua história, sintomas e objetivos.
           </p>
         </div>
 
-        <div class="conditions-grid">
-          <article class="condition-card">
-            <span class="condition-number">01</span>
-            <h3>Diabetes e pré-diabetes</h3>
-            <p>
-              Avaliação do controle glicêmico, risco de hipoglicemia, uso de medicamentos, exames, rotina alimentar, atividade física e prevenção de complicações.
-            </p>
+        <div class="conditions-accordion" data-conditions-accordion>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-1" aria-expanded="false" aria-controls="condition-answer-1">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3.5s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11Z"></path><path d="M9.5 15.2a2.8 2.8 0 0 0 2.8 2.3"></path></svg>
+                </span>
+                <span class="condition-title">Diabetes e pré-diabetes</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-1" role="region" aria-labelledby="condition-question-1" aria-hidden="true">
+              <div class="condition-content">
+                <p>Acompanhamento do controle glicêmico, revisão de exames, risco de hipoglicemia, uso de medicamentos, rotina alimentar, atividade física e prevenção de complicações.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">02</span>
-            <h3>Obesidade e resistência à insulina</h3>
-            <p>
-              Investigação dos fatores que dificultam o controle do peso, avaliação metabólica e construção de um plano individualizado para emagrecimento com segurança.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-2" aria-expanded="false" aria-controls="condition-answer-2">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 4v2"></path><path d="M12 18v2"></path><path d="M4 12h2"></path><path d="M18 12h2"></path></svg>
+                </span>
+                <span class="condition-title">Obesidade e resistência à insulina</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-2" role="region" aria-labelledby="condition-question-2" aria-hidden="true">
+              <div class="condition-content">
+                <p>Avaliação dos fatores que dificultam o controle do peso, investigação metabólica e construção de um plano terapêutico seguro, realista e individualizado.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">03</span>
-            <h3>Alterações da tireoide</h3>
-            <p>
-              Acompanhamento de hipotireoidismo, hipertireoidismo, nódulos tireoidianos, alterações laboratoriais e sintomas relacionados, conforme avaliação clínica.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-3" aria-expanded="false" aria-controls="condition-answer-3">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 8c-2.2-3.2-6-3.3-7.6-.9-1.5 2.4.3 6.7 5.2 6.7"></path><path d="M12 8c2.2-3.2 6-3.3 7.6-.9 1.5 2.4-.3 6.7-5.2 6.7"></path><path d="M9.6 13.8c0 3.2 1.1 5.2 2.4 5.2s2.4-2 2.4-5.2"></path><path d="M12 8v11"></path></svg>
+                </span>
+                <span class="condition-title">Alterações da tireoide</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-3" role="region" aria-labelledby="condition-question-3" aria-hidden="true">
+              <div class="condition-content">
+                <p>Acompanhamento de hipotireoidismo, hipertireoidismo, tireoidites, nódulos tireoidianos e alterações laboratoriais, considerando sintomas, exames e contexto clínico.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">04</span>
-            <h3>Colesterol alto e risco cardiovascular</h3>
-            <p>
-              Avaliação de perfil lipídico, pressão arterial, diabetes, obesidade, histórico familiar e outros fatores que influenciam o risco cardiovascular.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-4" aria-expanded="false" aria-controls="condition-answer-4">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.6c0 4.2-2.8 7.6-7 8.9-4.2-1.3-7-4.7-7-8.9V6l7-2.5Z"></path><path d="m8.8 12 2.1 2.1 4.5-4.7"></path></svg>
+                </span>
+                <span class="condition-title">Colesterol, triglicerídeos e risco metabólico</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-4" role="region" aria-labelledby="condition-question-4" aria-hidden="true">
+              <div class="condition-content">
+                <p>Avaliação de alterações do colesterol e triglicerídeos, risco cardiovascular, histórico familiar, hábitos de vida e necessidade de tratamento ou acompanhamento contínuo.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">05</span>
-            <h3>Esteatose hepática metabólica</h3>
-            <p>
-              Cuidado associado ao controle de peso, resistência à insulina, diabetes, colesterol, pressão arterial e outros fatores metabólicos relacionados.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-5" aria-expanded="false" aria-controls="condition-answer-5">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4.5 15.5c2.6 3.9 8.4 5.1 12.1 2.1 3.9-3.1 3.1-9.5 2.1-12.1-3.3-.2-9.5.7-12.1 4.6-1.1 1.6-1.7 3.5-2.1 5.4Z"></path><path d="M7 16c2.6-3 5.7-5.3 9.4-7"></path></svg>
+                </span>
+                <span class="condition-title">Esteatose hepática e síndrome metabólica</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-5" role="region" aria-labelledby="condition-question-5" aria-hidden="true">
+              <div class="condition-content">
+                <p>Investigação de gordura no fígado, resistência à insulina, aumento da circunferência abdominal, pressão alta e outros fatores associados ao risco cardiometabólico.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">06</span>
-            <h3>Sintomas e alterações metabólicas</h3>
-            <p>
-              Investigação de cansaço persistente, ganho de peso, dificuldade de emagrecer, alterações menstruais, queda de cabelo, sono ruim e outros sintomas que precisam ser avaliados em conjunto.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-6" aria-expanded="false" aria-controls="condition-answer-6">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.2-7-10a4 4 0 0 1 7-2.7A4 4 0 0 1 19 10c0 5.8-7 10-7 10Z"></path><path d="M12 7.3v12.2"></path></svg>
+                </span>
+                <span class="condition-title">Saúde hormonal da mulher</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-6" role="region" aria-labelledby="condition-question-6" aria-hidden="true">
+              <div class="condition-content">
+                <p>Avaliação de sintomas relacionados a SOP, irregularidade menstrual, acne, queda de cabelo, aumento de pelos, climatério, menopausa e alterações hormonais.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-7" aria-expanded="false" aria-controls="condition-answer-7">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M14.5 4.5a2.5 2.5 0 0 0-5 0v15a2.5 2.5 0 0 0 5 0v-15Z"></path><path d="M9.5 7H7.8a2 2 0 0 0 0 4h1.7"></path><path d="M14.5 13h1.7a2 2 0 0 1 0 4h-1.7"></path><path d="M9.5 13H8"></path><path d="M14.5 9H16"></path></svg>
+                </span>
+                <span class="condition-title">Osteoporose, vitamina D e saúde óssea</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-7" role="region" aria-labelledby="condition-question-7" aria-hidden="true">
+              <div class="condition-content">
+                <p>Avaliação de risco ósseo, osteopenia, osteoporose, deficiência de vitamina D, risco de fraturas e estratégias de prevenção e acompanhamento.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-8" aria-expanded="false" aria-controls="condition-answer-8">
+                <span class="condition-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M9 3h6"></path><path d="M10 3v3h4V3"></path><rect x="5" y="6" width="14" height="15" rx="2"></rect><path d="m8.8 14 2.1 2.1 4.5-4.7"></path></svg>
+                </span>
+                <span class="condition-title">Check-up metabólico e prevenção</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-8" role="region" aria-labelledby="condition-question-8" aria-hidden="true">
+              <div class="condition-content">
+                <p>Revisão global de exames, identificação de fatores de risco, prevenção de doenças crônicas e organização de um plano de cuidado conforme idade, história e objetivos de saúde.</p>
+                <a class="condition-link" href="https://wa.me/5562999235896" target="_blank" rel="noopener noreferrer">Falar sobre esse cuidado</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -3553,13 +3739,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1">
-                  <span>Quais problemas de saúde podem ser acompanhados?</span>
+                  <span>Estou com exames alterados, mas não sei exatamente o que procurar. A consulta pode ajudar?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" aria-hidden="true">
                 <p class="faq-answer">
-                  O acompanhamento pode incluir condições como diabetes, pré-diabetes, obesidade, resistência à insulina, alterações da tireoide, colesterol alto, esteatose hepática, hipertensão associada ao risco metabólico, sintomas persistentes e uso de múltiplos medicamentos. A proposta é avaliar a pessoa de forma integral, entendendo como essas condições se relacionam e construindo um plano de cuidado individualizado.
+                  Sim. Muitas pessoas chegam com glicose, colesterol, TSH, insulina, enzimas do fígado ou outros exames alterados, mas sem entender o que esses resultados significam na prática. A consulta ajuda a organizar esses achados, relacionar com sintomas, rotina e histórico de saúde, e definir os próximos passos com clareza.
                 </p>
               </div>
             </article>
@@ -3567,13 +3753,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2">
-                  <span>A consulta é indicada mesmo sem um diagnóstico definido?</span>
+                  <span>O que significa ter um cuidado integral e preventivo?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" aria-hidden="true">
                 <p class="faq-answer">
-                  Sim. Muitas pessoas procuram atendimento por sintomas como cansaço, ganho de peso, dificuldade para emagrecer, alteração de exames, queda de cabelo, sono ruim, alterações menstruais ou preocupação com histórico familiar. A consulta permite organizar a investigação, avaliar riscos, solicitar exames quando necessário e definir se há alguma condição metabólica ou clínica que precise de acompanhamento.
+                  Significa que a consulta não olha apenas a queixa principal. Mesmo quando o paciente chega por um motivo específico, também avaliamos exames, fatores de risco, histórico familiar, rotina, medicamentos e oportunidades de prevenção. A ideia é cuidar do problema atual sem deixar de olhar para a saúde como um todo.
                 </p>
               </div>
             </article>
@@ -3581,13 +3767,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3">
-                  <span>O atendimento é apenas para diabetes ou emagrecimento?</span>
+                  <span>Já passei por vários médicos e continuo sem clareza. Esse atendimento pode me ajudar?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" aria-hidden="true">
                 <p class="faq-answer">
-                  Não. Diabetes e emagrecimento são demandas frequentes, mas o cuidado também pode envolver tireoide, colesterol alto, resistência à insulina, pré-diabetes, esteatose hepática, hipertensão, risco cardiovascular e outras condições que precisam ser avaliadas em conjunto. O objetivo é evitar um cuidado fragmentado e construir um plano coerente com a realidade do paciente.
+                  Sim. Um dos diferenciais do atendimento é organizar informações que muitas vezes ficam dispersas: sintomas, exames, diagnósticos prévios, medicamentos em uso e orientações recebidas. A proposta é ajudar você a entender o que merece atenção, quais prioridades precisam ser cuidadas e qual caminho seguir.
                 </p>
               </div>
             </article>
@@ -3595,13 +3781,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4">
-                  <span>Como funciona a primeira consulta?</span>
+                  <span>A consulta é indicada mesmo sem um diagnóstico definido?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" aria-hidden="true">
                 <p class="faq-answer">
-                  A primeira consulta é voltada para entender sua história clínica, sintomas, exames prévios, rotina, medicamentos em uso, histórico familiar, objetivos e principais dificuldades. A partir dessa avaliação, são definidos os próximos passos, que podem incluir solicitação de exames, ajustes terapêuticos, orientações de estilo de vida, prescrição medicamentosa quando indicada e planejamento do acompanhamento.
+                  Sim. Sintomas como cansaço, ganho de peso, dificuldade para emagrecer, queda de cabelo, sono ruim, alterações menstruais ou histórico familiar de doenças metabólicas podem precisar de uma avaliação mais cuidadosa. A consulta permite organizar a investigação e entender se há alguma condição clínica, hormonal ou metabólica que precise de acompanhamento.
                 </p>
               </div>
             </article>
@@ -3609,13 +3795,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-5" aria-expanded="false" aria-controls="faq-answer-5">
-                  <span>Preciso levar exames para a consulta?</span>
+                  <span>Como funciona a primeira consulta?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-5" role="region" aria-labelledby="faq-question-5" aria-hidden="true">
                 <p class="faq-answer">
-                  Se você já tiver exames recentes, é recomendável levá-los. Eles ajudam a entender melhor seu histórico e evitam solicitações desnecessárias. Caso não tenha exames ou eles estejam incompletos, a necessidade de nova investigação será definida durante a consulta, de acordo com sua história clínica, sintomas, doenças associadas e medicamentos em uso.
+                  A primeira consulta é uma avaliação completa. São revisados sintomas, histórico de saúde, exames, medicamentos em uso, rotina, sono, alimentação, histórico familiar e objetivos do paciente. A partir disso, são definidos os próximos passos, que podem incluir investigação complementar, orientações, prescrição quando indicada e planejamento do cuidado.
                 </p>
               </div>
             </article>
@@ -3623,13 +3809,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-6" aria-expanded="false" aria-controls="faq-answer-6">
-                  <span>A consulta inclui prescrição de medicamentos?</span>
+                  <span>Preciso levar exames para a consulta?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" aria-hidden="true">
                 <p class="faq-answer">
-                  Pode incluir, quando houver indicação clínica. A prescrição depende da avaliação individual, dos diagnósticos, exames, contraindicações, interações medicamentosas, objetivos do tratamento e segurança. Em muitos casos, o cuidado também envolve organização da rotina, alimentação, sono, atividade física, prevenção de complicações e acompanhamento longitudinal.
+                  Se você já tiver exames recentes, é recomendável levá-los. Eles ajudam a entender melhor seu histórico e evitam solicitações desnecessárias. Caso não tenha exames ou eles estejam incompletos, a necessidade de nova investigação será definida durante a consulta, de acordo com sua história clínica, sintomas e fatores de risco.
                 </p>
               </div>
             </article>
@@ -3637,13 +3823,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-7" aria-expanded="false" aria-controls="faq-answer-7">
-                  <span>Por que fazer acompanhamento contínuo?</span>
+                  <span>O que significa, de fato, um tratamento personalizado?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-7" role="region" aria-labelledby="faq-question-7" aria-hidden="true">
                 <p class="faq-answer">
-                  Condições metabólicas e crônicas costumam mudar ao longo do tempo. Peso, glicose, pressão, colesterol, função tireoidiana, sintomas, tolerabilidade aos medicamentos e rotina podem variar. O acompanhamento contínuo permite ajustar o plano terapêutico, prevenir complicações, melhorar adesão e tomar decisões com mais segurança.
+                  Significa entender que não existe um único caminho que sirva para todos. O melhor tratamento é aquele que considera diagnóstico, exames, sintomas, rotina, preferências, limitações, histórico de saúde e segurança. A proposta não é encaixar o paciente em um modelo pronto, mas construir uma estratégia possível, coerente com sua realidade e ajustada conforme a resposta ao longo do tempo.
                 </p>
               </div>
             </article>
@@ -3651,13 +3837,13 @@
             <article class="faq-item">
               <h3>
                 <button class="faq-question" type="button" id="faq-question-8" aria-expanded="false" aria-controls="faq-answer-8">
-                  <span>A consulta substitui acompanhamento com outros profissionais?</span>
+                  <span>A consulta também contempla avaliações em outras áreas da saúde?</span>
                   <span class="faq-toggle-icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq-panel" id="faq-answer-8" role="region" aria-labelledby="faq-question-8" aria-hidden="true">
                 <p class="faq-answer">
-                  Depende do caso. Muitas condições podem ser conduzidas de forma integrada em uma consulta médica bem estruturada, mas alguns pacientes se beneficiam de cuidado multiprofissional, como nutrição, psicologia, educação física, fisioterapia ou outros especialistas. Quando necessário, esses encaminhamentos são orientados de forma individualizada.
+                  Sim. Mesmo quando o paciente chega com uma queixa principal, a consulta também considera outras áreas importantes da saúde, como prevenção, fatores de risco, exames de rotina, histórico familiar, medicamentos em uso, sono, hábitos de vida e risco cardiovascular.
                 </p>
               </div>
             </article>
@@ -3671,7 +3857,7 @@
               </h3>
               <div class="faq-panel" id="faq-answer-9" role="region" aria-labelledby="faq-question-9" aria-hidden="true">
                 <p class="faq-answer">
-                  Para garantir um acompanhamento de excelência, próximo e dedicado, os atendimentos médicos são exclusivamente particulares. Os exames solicitados durante a consulta podem ser realizados pelo convênio, conforme a cobertura do seu plano de saúde. Também facilitamos o processo para solicitação de reembolso, emitindo toda a documentação necessária, como nota fiscal e recibo. A aprovação e o valor do reembolso dependem das regras de cada operadora.
+                  Os atendimentos médicos são exclusivamente particulares, para garantir uma consulta com tempo, escuta e acompanhamento mais próximo. Exames solicitados podem ser realizados pelo convênio, conforme a cobertura do seu plano. Também é fornecida a documentação necessária para solicitação de reembolso, quando aplicável.
                 </p>
               </div>
             </article>
