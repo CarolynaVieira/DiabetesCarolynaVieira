@@ -29,6 +29,7 @@ jobs:
             **/node_modules/**
             diabetes/**
             checkup/**
+            prevencao/**
             emagrecimento/**
 
   deploy-diabetes:
@@ -79,7 +80,7 @@ jobs:
 
   deploy-emagrecimento:
     name: Deploy emagrecimento
-    needs: deploy-checkup
+    needs: deploy-prevencao
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -94,6 +95,29 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./emagrecimento/
           server-dir: ./emagrecimento/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+
+  deploy-prevencao:
+    name: Deploy prevencao
+    needs: deploy-checkup
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload prevencao
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./prevencao/
+          server-dir: ./prevencao/
           exclude: |
             **/.git*
             **/.git*/**
