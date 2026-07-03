@@ -36,7 +36,7 @@ if (Test-Path -LiteralPath $assetsSource) {
     New-Item -ItemType Directory -Path $assetsTarget | Out-Null
   }
 
-  Copy-Item -LiteralPath (Join-Path $assetsSource "*") -Destination $assetsTarget -Recurse -Force
+  Copy-Item -Path (Join-Path $assetsSource "*") -Destination $assetsTarget -Recurse -Force
 }
 
 if ($Check) {
