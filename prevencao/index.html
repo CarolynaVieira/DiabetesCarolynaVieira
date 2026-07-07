@@ -748,57 +748,100 @@
       line-height: 1.62;
     }
 
-    .conditions-grid {
+    .conditions-accordion {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 1040px;
+      margin: 0 auto;
     }
 
-    .condition-card {
+    .condition-item {
       position: relative;
-      min-height: 224px;
-      padding: 26px 26px 28px;
-      border-radius: 20px;
+      border-radius: 18px;
       background: rgba(255, 255, 255, 0.56);
-      border: 1px solid rgba(230, 217, 184, 0.78);
-      box-shadow: 0 14px 30px rgba(72, 52, 38, 0.04);
+      border: 1px solid rgba(227, 221, 218, 0.9);
+      box-shadow: 0 12px 26px rgba(72, 52, 38, 0.035);
       overflow: hidden;
+      transition: border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
     }
 
-    .condition-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 26px;
-      width: 42px;
-      height: 2px;
-      background: rgba(122, 90, 97, 0.46);
+    .condition-item.is-open {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(122, 90, 97, 0.18);
+      box-shadow: 0 16px 34px rgba(72, 52, 38, 0.055);
     }
 
-    .condition-number {
-      display: block;
-      margin-bottom: 18px;
+    .condition-item h3 {
+      margin: 0;
+    }
+
+    .condition-trigger {
+      width: 100%;
+      min-height: 76px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 30px;
+      gap: 14px;
+      align-items: center;
       color: var(--brand);
-      font-size: 12px;
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      text-align: left;
     }
 
-    .condition-card h3 {
-      margin: 0 0 10px;
+    .condition-title {
       font-family: "Playfair Display", serif;
-      color: var(--text);
+      color: var(--brand);
       font-size: 23px;
       line-height: 1.18;
       font-weight: 600;
     }
 
-    .condition-card p {
+    .condition-toggle {
+      width: 30px;
+      height: 30px;
+      display: inline-grid;
+      place-items: center;
+      justify-self: end;
+      border-radius: 50%;
+      color: var(--brand);
+      background: rgba(248, 242, 235, 0.85);
+      border: 1px solid rgba(122, 90, 97, 0.12);
+      font-size: 20px;
+      line-height: 1;
+      transition: transform 0.24s ease, background 0.24s ease;
+    }
+
+    .condition-item.is-open .condition-toggle {
+      transform: rotate(180deg);
+      background: rgba(216, 183, 190, 0.16);
+    }
+
+    .condition-panel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.32s ease, opacity 0.22s ease;
+    }
+
+    .condition-item.is-open .condition-panel {
+      opacity: 1;
+    }
+
+    .condition-content {
+      padding: 0 20px 20px;
+    }
+
+    .condition-content p {
       margin: 0;
       color: var(--text-soft);
       font-size: 15px;
       line-height: 1.58;
+    }
+
+    .condition-trigger:focus-visible {
+      outline: 2px solid rgba(122, 90, 97, 0.42);
+      outline-offset: 3px;
+      border-radius: 14px;
     }
 
     /* FAQ */
@@ -3054,7 +3097,7 @@
     }
 
     @media (max-width: 980px) {
-      .conditions-grid {
+      .conditions-accordion {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -3109,31 +3152,31 @@
         line-height: 1.55;
       }
 
-      .conditions-grid {
+      .conditions-accordion {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 10px;
       }
 
-      .condition-card {
-        min-height: 0;
-        padding: 21px 20px 22px;
-        border-radius: 18px;
+      .condition-trigger {
+        min-height: 66px;
+        padding: 14px 15px;
       }
 
-      .condition-card::after {
-        left: 20px;
-        width: 34px;
+      .condition-title {
+        font-size: 20px;
       }
 
-      .condition-number {
-        margin-bottom: 12px;
+      .condition-toggle {
+        width: 28px;
+        height: 28px;
+        font-size: 19px;
       }
 
-      .condition-card h3 {
-        font-size: 21px;
+      .condition-content {
+        padding: 0 15px 16px;
       }
 
-      .condition-card p {
+      .condition-content p {
         font-size: 14.5px;
         line-height: 1.52;
       }
@@ -3475,53 +3518,89 @@
           </p>
         </div>
 
-        <div class="conditions-grid">
-          <article class="condition-card">
-            <span class="condition-number">01</span>
-            <h3>Diabetes e metabolismo</h3>
-            <p>
-              Rastreamento e acompanhamento de diabetes, pré-diabetes, resistência à insulina, ganho de peso, esteatose hepática e outras alterações metabólicas frequentes.
-            </p>
+        <div class="conditions-accordion" data-conditions-accordion>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-1" aria-expanded="false" aria-controls="condition-answer-1">
+                <span class="condition-title">Diabetes e metabolismo</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-1" role="region" aria-labelledby="condition-question-1" aria-hidden="true">
+              <div class="condition-content">
+                <p>Rastreamento e acompanhamento de diabetes, pré-diabetes, resistência à insulina, ganho de peso, esteatose hepática e outras alterações metabólicas frequentes.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">02</span>
-            <h3>Saúde cardiovascular</h3>
-            <p>
-              Análise de pressão arterial, colesterol, diabetes, obesidade, tabagismo, sedentarismo e histórico familiar para prevenção de infarto, AVC e doença cardiovascular.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-2" aria-expanded="false" aria-controls="condition-answer-2">
+                <span class="condition-title">Saúde cardiovascular</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-2" role="region" aria-labelledby="condition-question-2" aria-hidden="true">
+              <div class="condition-content">
+                <p>Análise de pressão arterial, colesterol, diabetes, obesidade, tabagismo, sedentarismo e histórico familiar para prevenção de infarto, AVC e doença cardiovascular.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">03</span>
-            <h3>Saúde da mulher</h3>
-            <p>
-              Avaliação de exames preventivos, ciclo menstrual, climatério, menopausa, sintomas hormonais, histórico familiar, rastreamentos indicados por idade e cuidados importantes em cada fase da vida.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-3" aria-expanded="false" aria-controls="condition-answer-3">
+                <span class="condition-title">Saúde da mulher</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-3" role="region" aria-labelledby="condition-question-3" aria-hidden="true">
+              <div class="condition-content">
+                <p>Avaliação de exames preventivos, ciclo menstrual, climatério, menopausa, sintomas hormonais, histórico familiar, rastreamentos indicados por idade e cuidados importantes em cada fase da vida.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">04</span>
-            <h3>Tireoide e hormônios</h3>
-            <p>
-              Avaliação de sintomas persistentes, exames tireoidianos, alterações hormonais e necessidade real de investigação complementar, evitando tanto excesso de exames quanto atraso no diagnóstico.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-4" aria-expanded="false" aria-controls="condition-answer-4">
+                <span class="condition-title">Tireoide e hormônios</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-4" role="region" aria-labelledby="condition-question-4" aria-hidden="true">
+              <div class="condition-content">
+                <p>Avaliação de sintomas persistentes, exames tireoidianos, alterações hormonais e necessidade real de investigação complementar, evitando tanto excesso de exames quanto atraso no diagnóstico.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">05</span>
-            <h3>Exames de rotina</h3>
-            <p>
-              Solicitação e revisão de exames laboratoriais conforme idade, sintomas, histórico, medicamentos em uso e fatores de risco, com critério clínico e sem exames aleatórios.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-5" aria-expanded="false" aria-controls="condition-answer-5">
+                <span class="condition-title">Exames de rotina</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-5" role="region" aria-labelledby="condition-question-5" aria-hidden="true">
+              <div class="condition-content">
+                <p>Solicitação e revisão de exames laboratoriais conforme idade, sintomas, histórico, medicamentos em uso e fatores de risco, com critério clínico e sem exames aleatórios.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="condition-card">
-            <span class="condition-number">06</span>
-            <h3>Revisão de medicamentos</h3>
-            <p>
-              Análise de medicamentos em uso, doses, interações, adesão ao tratamento, efeitos colaterais e necessidade de ajustes, considerando também sono, alimentação, atividade física e rotina.
-            </p>
+          <article class="condition-item">
+            <h3>
+              <button class="condition-trigger" type="button" id="condition-question-6" aria-expanded="false" aria-controls="condition-answer-6">
+                <span class="condition-title">Revisão de medicamentos</span>
+                <span class="condition-toggle" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div class="condition-panel" id="condition-answer-6" role="region" aria-labelledby="condition-question-6" aria-hidden="true">
+              <div class="condition-content">
+                <p>Análise de medicamentos em uso, doses, interações, adesão ao tratamento, efeitos colaterais e necessidade de ajustes, considerando também sono, alimentação, atividade física e rotina.</p>
+              </div>
+            </div>
           </article>
         </div>
       </div>
