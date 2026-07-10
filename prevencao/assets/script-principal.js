@@ -4,6 +4,17 @@ const menuOverlay = document.querySelector(".mobile-menu-overlay");
 const body = document.body;
 const mobileBreakpoint = window.matchMedia("(max-width: 980px)");
 
+const onMediaChange = (mediaQuery, callback) => {
+  if (typeof mediaQuery.addEventListener === "function") {
+    mediaQuery.addEventListener("change", callback);
+    return;
+  }
+
+  if (typeof mediaQuery.addListener === "function") {
+    mediaQuery.addListener(callback);
+  }
+};
+
 if (menuToggle && siteNav && menuOverlay) {
   const closeMenu = () => {
     menuToggle.classList.remove("is-open");
@@ -46,7 +57,7 @@ if (menuToggle && siteNav && menuOverlay) {
     }
   });
 
-  mobileBreakpoint.addEventListener("change", (event) => {
+  onMediaChange(mobileBreakpoint, (event) => {
     if (!event.matches) {
       closeMenu();
     }
@@ -71,7 +82,7 @@ if (conditionItems.length) {
     panel.style.maxHeight = isOpen ? `${panel.scrollHeight}px` : "0px";
 
     if (toggle) {
-      toggle.textContent = isOpen ? "–" : "+";
+      toggle.textContent = isOpen ? "-" : "+";
     }
   };
 
