@@ -32,6 +32,8 @@ jobs:
             checkup/**
             prevencao/**
             emagrecimento/**
+            sop/**
+            tratamentos/**
 
   deploy-diabetes:
     name: Deploy diabetes
@@ -99,6 +101,54 @@ jobs:
           local-dir: ./prevencao/
           server-dir: ./public_html/prevencao/
           state-name: .ftp-deploy-sync-state-prevencao.json
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+
+  deploy-sop:
+    name: Deploy sop
+    needs: deploy-emagrecimento
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload sop
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./sop/
+          server-dir: ./public_html/sop/
+          state-name: .ftp-deploy-sync-state-sop.json
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+
+  deploy-tratamentos:
+    name: Deploy tratamentos
+    needs: deploy-sop
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload tratamentos
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./tratamentos/
+          server-dir: ./public_html/tratamentos/
+          state-name: .ftp-deploy-sync-state-tratamentos.json
           exclude: |
             **/.git*
             **/.git*/**
