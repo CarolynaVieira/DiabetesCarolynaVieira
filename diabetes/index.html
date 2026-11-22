@@ -2867,6 +2867,12 @@
         font-size: 18px;
       }
     }
+
+    .reviews-google-link {
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+    }
   </style>
   <!-- Dados estruturados: trilha de navegação -->
   <script type="application/ld+json">
@@ -3360,75 +3366,136 @@
     <section class="section" id="depoimentos">
       <div class="container">
         <div class="section-title-wrap">
-          <div class="section-tag">Depoimentos</div>
+          <div class="section-tag">Avaliações no Google</div>
           <h2 class="section-title">O que dizem os pacientes</h2>
+          <p class="section-subtitle">Trechos de avaliações públicas deixadas no Perfil da Empresa no Google.</p>
         </div>
 
-        <div class="testimonials-grid" data-testimonials-carousel aria-label="Avaliações dos pacientes">
+        <div class="testimonials-grid" data-testimonials-carousel aria-label="Avaliações dos pacientes no Google">
           <article class="testimonial-card card fade-in">
             <div>
-              <div class="stars">★★★★★</div>
+              <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
               <p class="testimonial-text">
-                “Finalmente encontrei uma médica que me ouve de verdade. Ela lembra de tudo que já conversei e me acompanha com atenção. Me sinto muito mais tranquila com minha saúde.”
+                “Consulta completa, acolhimento, escuta qualificada e cuidado integral e individualizado.”
+              </p>
+            </div>
+
+            <div class="testimonial-author">
+              <div class="avatar">I</div>
+              <div>
+                <strong>Isa Ingryd M.</strong>
+                <span>Avaliação no Google</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card card fade-in">
+            <div>
+              <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <p class="testimonial-text">
+                “Minha família sempre se consulta com ela. Eu, minha filha, meu esposo e minha mãe.”
+              </p>
+            </div>
+
+            <div class="testimonial-author">
+              <div class="avatar">B</div>
+              <div>
+                <strong>Bruna L.</strong>
+                <span>Avaliação no Google</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card card fade-in">
+            <div>
+              <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <p class="testimonial-text">
+                “Difícil encontrarmos uma médica que dê a atenção que a gente busca. […] E quero levar minha mãe nela.”
+              </p>
+            </div>
+
+            <div class="testimonial-author">
+              <div class="avatar">T</div>
+              <div>
+                <strong>Thais P.</strong>
+                <span>Avaliação no Google</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card card fade-in">
+            <div>
+              <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <p class="testimonial-text">
+                “Que calmaria, a doutora muito atenciosa traz clareza com tanta leveza.”
               </p>
             </div>
 
             <div class="testimonial-author">
               <div class="avatar">A</div>
               <div>
-                <strong>Ana Paula Ferreira</strong>
-                <span>Paciente</span>
+                <strong>Ana Carolina B.</strong>
+                <span>Avaliação no Google</span>
               </div>
             </div>
           </article>
 
           <article class="testimonial-card card fade-in">
             <div>
-              <div class="stars">★★★★★</div>
+              <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
               <p class="testimonial-text">
-                “Depois de muito tempo indo a vários especialistas sem um fio condutor, ter uma médica que coordena todo o meu tratamento fez toda a diferença. Recomendo muito.”
+                “Sempre prestativa, tirou todas as nossas dúvidas e o consultório dela é incrível.”
               </p>
             </div>
 
             <div class="testimonial-author">
-              <div class="avatar">R</div>
+              <div class="avatar">J</div>
               <div>
-                <strong>Roberto Souza</strong>
-                <span>Paciente</span>
+                <strong>José Alberto L.</strong>
+                <span>Avaliação no Google</span>
               </div>
             </div>
           </article>
 
           <article class="testimonial-card card fade-in">
             <div>
-              <div class="stars">★★★★★</div>
+              <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
               <p class="testimonial-text">
-                “A consulta foi completamente diferente do que eu estava acostumada. Ela perguntou sobre minha rotina, meu sono, meu estresse. Senti que estava sendo cuidada como uma pessoa inteira.”
+                “Uma pessoa muito atenciosa, muito prestativa.”
               </p>
             </div>
 
             <div class="testimonial-author">
-              <div class="avatar">C</div>
+              <div class="avatar">V</div>
               <div>
-                <strong>Camila Mendes</strong>
-                <span>Paciente</span>
+                <strong>Vitor N.</strong>
+                <span>Avaliação no Google</span>
               </div>
             </div>
           </article>
         </div>
 
-        <div class="testimonials-carousel-controls" aria-label="Navegar pelos depoimentos">
-          <button class="testimonials-nav testimonials-prev" type="button" aria-label="Depoimento anterior">
+        <div class="testimonials-carousel-controls" aria-label="Navegar pelas avaliações">
+          <button class="testimonials-nav testimonials-prev" type="button" aria-label="Avaliação anterior">
             <span aria-hidden="true">&#8249;</span>
           </button>
           <div class="testimonials-dots" aria-hidden="true">
             <span class="testimonials-dot is-active"></span>
             <span class="testimonials-dot"></span>
             <span class="testimonials-dot"></span>
+            <span class="testimonials-dot"></span>
+            <span class="testimonials-dot"></span>
+            <span class="testimonials-dot"></span>
           </div>
-          <button class="testimonials-nav testimonials-next" type="button" aria-label="Próximo depoimento">
+          <button class="testimonials-nav testimonials-next" type="button" aria-label="Próxima avaliação">
             <span aria-hidden="true">&#8250;</span>
           </button>
+        </div>
+
+        <div class="reviews-google-link">
+          <a class="btn-secondary" href="https://maps.app.goo.gl/mkVDbPuXBXeFnTz86" target="_blank" rel="noopener noreferrer">
+            Ver todas as avaliações no Google
+          </a>
         </div>
       </div>
     </section>
